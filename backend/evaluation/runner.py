@@ -5,11 +5,17 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
+import logging
 import time
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Literal
+from typing import Any, Callable, Literal, TypeVar
 from uuid import uuid4
+
+from google.api_core.exceptions import ResourceExhausted
+
+logger = logging.getLogger(__name__)
+T = TypeVar("T")
 
 from sqlmodel import Session, select
 
@@ -32,6 +38,31 @@ from services.vector_store import VectorStoreService
 
 DATASET_DEFAULT = Path(__file__).parent / "datasets" / "eval_squad_v1.jsonl"
 REPORTS_DIR = Path(__file__).parent / "reports"
+
+_RETRY_MAX_ATTEMPTS = 3
+_RETRY_BASE_DELAY = 5.0
+_RETRY_MAX_DELAY = 60.0
+
+
+async def _call_with_retry(fn: Callable[..., Any], *args: Any, **kwargs: Any) -> Any:
+    """Call *fn* with exponential backoff on 429 ResourceExhausted errors."""
+    for attempt in range(1, _RETRY_MAX_ATTEMPTS + 1):
+        try:
+            return await fn(*args, **kwargs)
+        except (ResourceExhausted, Exception) as exc:
+            is_rate_limit = isinstance(exc, ResourceExhausted) or "429" in str(exc)
+            if not is_rate_limit or attempt == _RETRY_MAX_ATTEMPTS:
+                raise
+            delay = min(_RETRY_BASE_DELAY * (2 ** (attempt - 1)), _RETRY_MAX_DELAY)
+            logger.warning(
+                "Rate-limited (attempt %d/%d). Retrying in %.0fs...",
+                attempt,
+                _RETRY_MAX_ATTEMPTS,
+                delay,
+            )
+            await asyncio.sleep(delay)
+    # Should never reach here, but satisfy type checker
+    raise RuntimeError("Exhausted retries")
 
 
 def _load_dataset(path: Path, limit: int | None = None) -> list[EvalSample]:
@@ -113,6 +144,7 @@ async def run_evaluation(
     dataset_path: Path = DATASET_DEFAULT,
     limit: int | None = None,
     top_k: int = 5,
+    delay: float = 1.0,
 ) -> dict[str, Any]:
     """Run evaluation and write report artifacts."""
 
@@ -173,58 +205,73 @@ async def run_evaluation(
             for doc, meta in zip(retrieved_docs, retrieved_metas)
         ]
 
+        rate_limited = False
+
         if mode == "full_rag_with_judges":
-            llm_started = time.time()
-            if hasattr(llm_service, "generate_with_metadata"):
-                answer_text, usage = await llm_service.generate_with_metadata(
-                    query=sample.query,
-                    context_docs=context_docs,
-                    route="rag_simple",
+            try:
+                llm_started = time.time()
+                if hasattr(llm_service, "generate_with_metadata"):
+                    answer_text, usage = await _call_with_retry(
+                        llm_service.generate_with_metadata,
+                        query=sample.query,
+                        context_docs=context_docs,
+                        route="rag_simple",
+                    )
+                else:
+                    answer_text = await _call_with_retry(
+                        llm_service.generate,
+                        query=sample.query,
+                        context_docs=context_docs,
+                        route="rag_simple",
+                    )
+                    usage = {}
+
+                llm_latency_ms = float(usage.get("latency_ms", 0.0)) or ((time.time() - llm_started) * 1000)
+                llm_prompt_tokens = int(usage.get("prompt_tokens", 0) or 0)
+                llm_completion_tokens = int(usage.get("completion_tokens", 0) or 0)
+                llm_total_tokens = int(usage.get("total_tokens", 0) or 0)
+                llm_cost_usd = cost_calculator.estimate_cost_usd(
+                    model_name=str(usage.get("model_name", llm_service.current_model_name)),
+                    prompt_tokens=llm_prompt_tokens,
+                    completion_tokens=llm_completion_tokens,
                 )
-            else:
-                answer_text = await llm_service.generate(
+
+                grounded = await _call_with_retry(
+                    groundedness_judge.evaluate,
                     query=sample.query,
+                    answer=answer_text,
                     context_docs=context_docs,
-                    route="rag_simple",
+                    reference_answer=sample.reference_answer,
                 )
-                usage = {}
+                quality = await _call_with_retry(
+                    quality_judge.evaluate,
+                    query=sample.query,
+                    answer=answer_text,
+                    context_docs=context_docs,
+                    reference_answer=sample.reference_answer,
+                )
 
-            llm_latency_ms = float(usage.get("latency_ms", 0.0)) or ((time.time() - llm_started) * 1000)
-            llm_prompt_tokens = int(usage.get("prompt_tokens", 0) or 0)
-            llm_completion_tokens = int(usage.get("completion_tokens", 0) or 0)
-            llm_total_tokens = int(usage.get("total_tokens", 0) or 0)
-            llm_cost_usd = cost_calculator.estimate_cost_usd(
-                model_name=str(usage.get("model_name", llm_service.current_model_name)),
-                prompt_tokens=llm_prompt_tokens,
-                completion_tokens=llm_completion_tokens,
-            )
+                judge_outputs = {
+                    "groundedness": grounded.model_dump(),
+                    "quality": quality.model_dump(),
+                }
 
-            grounded = await groundedness_judge.evaluate(
-                query=sample.query,
-                answer=answer_text,
-                context_docs=context_docs,
-                reference_answer=sample.reference_answer,
-            )
-            quality = await quality_judge.evaluate(
-                query=sample.query,
-                answer=answer_text,
-                context_docs=context_docs,
-                reference_answer=sample.reference_answer,
-            )
-
-            judge_outputs = {
-                "groundedness": grounded.model_dump(),
-                "quality": quality.model_dump(),
-            }
-
-            hallucination = grounded.output.error_type == "hallucination"
-            uncertainty = grounded.output.uncertainty or quality.output.uncertainty
-            answer_metrics = AnswerMetrics(
-                groundedness=grounded.output.score,
-                quality=quality.output.score,
-                hallucination=hallucination,
-                uncertainty=uncertainty,
-            )
+                hallucination = grounded.output.error_type == "hallucination"
+                uncertainty = grounded.output.uncertainty or quality.output.uncertainty
+                answer_metrics = AnswerMetrics(
+                    groundedness=grounded.output.score,
+                    quality=quality.output.score,
+                    hallucination=hallucination,
+                    uncertainty=uncertainty,
+                )
+            except Exception as exc:
+                logger.warning(
+                    "Sample %s failed after retries: %s. Marking as rate_limited.",
+                    sample.id,
+                    exc,
+                )
+                answer_metrics = AnswerMetrics()
+                rate_limited = True
 
         total_latency_ms = (time.time() - case_started) * 1000
         perf = PerfMetrics(
@@ -242,6 +289,8 @@ async def run_evaluation(
         )
 
         failure_reasons: list[str] = []
+        if rate_limited:
+            failure_reasons.append("rate_limited")
         if retrieval.recall_at_k < 1.0 and sample.gold_doc_ids:
             failure_reasons.append("retrieval_miss")
         if mode == "full_rag_with_judges" and answer_metrics.hallucination:
@@ -262,6 +311,10 @@ async def run_evaluation(
 
         results.append(result)
         _persist_case_result(result)
+
+        # Throttle API calls to avoid rate limits
+        if delay > 0:
+            await asyncio.sleep(delay)
 
         if failure_reasons:
             failed_examples.append(
@@ -399,6 +452,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--limit", type=int, default=None, help="Limit number of samples.")
     parser.add_argument("--top-k", type=int, default=5, help="Top-K retrieval depth.")
+    parser.add_argument("--delay", type=float, default=1.0, help="Seconds to pause between samples (rate-limit mitigation).")
     return parser.parse_args()
 
 
@@ -409,6 +463,7 @@ async def _main() -> None:
         dataset_path=args.dataset,
         limit=args.limit,
         top_k=args.top_k,
+        delay=args.delay,
     )
     print(json.dumps(output, indent=2))
 

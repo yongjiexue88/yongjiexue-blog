@@ -1,8 +1,28 @@
 # 🧠 RAG System — Retrieval-Augmented Generation
 
-A full-stack RAG system that retrieves relevant documents from a vector database and generates grounded responses using Google Gemini. Features **LangGraph orchestration**, **strict structured routing/planning/validation**, **SSE streaming**, a **React chat interface**, and a **built-in evaluation framework**.
+A full-stack RAG system that retrieves relevant documents from a vector database and generates grounded responses using Google Gemini. Features **LangGraph orchestration**, **strict structured routing/planning/validation**, **SSE streaming**, a **React chat UI**, and a **built-in evaluation framework**.
 
-> Built with FastAPI, LangGraph, Neon PostgreSQL (`pgvector`), Google Gemini, and React.
+> Built with FastAPI · LangGraph · Neon PostgreSQL (pgvector) · Google Gemini · React + Vite
+
+> [!NOTE]
+> **Reviewers:** This project requires two environment variables (`GEMINI_API_KEY` and `DATABASE_URL`).
+> Sandbox credentials will be provided separately. See [Reviewer Notes](#reviewer-notes) for details.
+
+---
+
+## Key Features
+
+- 🔍 **Semantic search** — Gemini embeddings + Neon PostgreSQL (`pgvector`) with HNSW indexing
+- 🧭 **LangGraph state machine** — Routed execution: `ingest_query → router → planner → tool_orchestrator → writer → validator → finalize`
+- ✅ **Strict structured control nodes** — Schema-enforced Router / Planner / Validator with schema validation + retry
+- ⚡ **SSE streaming** — Token-by-token Server-Sent Events with real-time pipeline progress
+- 🛡️ **Query guard** — Input normalization, length limits, and safety routing (`direct`, `rag_simple`, `clarify`, `unsafe`)
+- 🔄 **Agentic retrieval loop** — Planner-directed `vector_search` + `rerank`, with replan & circuit-breaker fail-safe
+- 📊 **Evaluation framework** — Custom LLM judges (Groundedness, Quality), heuristic metrics, CI quality gates
+- 🐳 **One-command deploy** — Docker Compose (local) + Cloud Run / Firebase Hosting (production)
+- 📈 **Observability** — Prometheus metrics, per-query cost/token tracking, structured observation logs
+
+---
 
 ## Architecture
 
@@ -43,287 +63,141 @@ flowchart TB
     style Data fill:#0f3460,stroke:#10b981,color:#fff
 ```
 
-## End-to-End Flow (Roadmap)
-
-```mermaid
-flowchart TD
-    A["Data Sources"] --> B["Data Processing<br/>parse -> chunk -> metadata"]
-    B --> C["Database Layer<br/>Vector + Relational"]
-    C --> D["User Query"]
-    D --> E["Reasoning Engine<br/>plan + route + tools"]
-    E --> F["Multi-Agent System"]
-    F --> G["Database Retrieval"]
-    G --> H["Human Validation (optional)"]
-    H --> I["Evaluation Layer"]
-    I -. feedback loop .-> A
-```
-
-### Implementation Status
-
-- [x] Data Sources (Completed)
-- [x] Data Processing (Completed)
-- [x] Database Layer (Completed)
-- [x] User Query (Guard implemented)
-- [x] Reasoning Engine (plan + route + tools)
-- [ ] Multi-Agent System
-- [x] Database Retrieval (agentic retrieval loop)
-- [ ] Human Validation (optional)
-- [/] Evaluation Layer + feedback loop (Framework ready)
-
-### Data Sources & Processing (Current Milestone)
-
-- **Status**: ✅ Completed for current scope
-- **Current source**: `backend/data/documents/SQuAD-small.json`
-- **Processing flow**:
-  1. Parse source file
-  2. Split content into chunks
-  3. Attach metadata per chunk
-  4. Send chunks to embedding + database ingestion path
-- **Notes**: This milestone is intentionally scoped to data input and processing only. Remaining layers are planned for future milestones.
-
-### User Query (Current Guard)
-
-- **Status**: ✅ Basic guard implemented
-- **What is implemented now**:
-  1. Normalize input by trimming and collapsing repeated whitespace
-  2. Reject empty or whitespace-only query input
-  3. Keep explicit request bounds (`max_length=1000`, `top_k` range)
-- **Implementation**: `backend/services/query_guard.py` + `QueryRequest` validator in `backend/models.py`
-- **Scope note**: Rate limits, intent gating, and confidence thresholds are planned in later milestones.
-
-### Reasoning Engine (Current Milestone)
-
-- **Status**: ✅ Implemented (Phase 1)
-- **What is implemented now**:
-  1. **LangGraph state machine** with explicit nodes:
-     `ingest_query -> query_router -> planner -> tool_orchestrator -> writer -> validation_router -> decision_node -> finalize_response`
-  2. **Strict structured control nodes** (Router/Planner/Validator) with schema validation and retry on schema failures.
-  3. **Supported routes**: `direct`, `rag_simple`, `clarify`, `unsafe`.
-  4. **Supported tools**: `vector_search`, `rerank`.
-  5. **Validation loop**: `pass | revise | replan | fail_safe` with one retry and deterministic fail-safe fallback.
-  6. **Safety parity across endpoints**: `/query` and `/query/stream` both run the same validation contract before returning user-visible answers.
-- **Implementation**:
-  - `backend/services/rag.py`
-  - `backend/services/llm.py`
-  - `backend/services/vector_store.py`
-  - `backend/tests/test_rag_pipeline.py`
-- **Scope note**: Multi-agent routing and additional external tools are intentionally out of scope for this milestone.
-
-### Database Retrieval (Agentic Retrieval Loop)
-
-- **Status**: ✅ Implemented for current scope
-- **What is implemented now**:
-  1. **Planner-directed retrieval loop** executes `vector_search` and optional `rerank` steps from plan budgets.
-  2. **Evidence extraction and ranking** converts vector results into chunk-level evidence with relevance scores.
-  3. **Agentic replan behavior** triggers when retrieval returns no evidence and retries once before fail-safe.
-  4. **Circuit-breaker guard** fails safe when tool failure ratio exceeds threshold.
-  5. **Endpoint parity**: `/query` and `/query/stream` both use the same validated graph result before responding.
-- **Implementation**:
-  - `backend/services/rag.py`
-  - `backend/services/vector_store.py`
-  - `backend/tests/test_rag_pipeline.py`
-  - `backend/tests/test_vector_store.py`
-- **Scope note**: This covers the single-agent retrieval loop over the active corpus. Multi-agent retrieval coordination remains a separate milestone.
-
-### Evaluation Layer & Feedback Loop (Current Milestone)
-
-- **Status**: ✅ Framework implemented
-- **What is implemented now**:
-  1. **Runner**: Automated execution engine (`runner.py`)
-  2. **Judges**: LLM-based judges for Groundedness and Quality (`judges.py`)
-  3. **Gates**: CI/CD quality gates with strict thresholds (`check_gates.py`)
-  4. **Reports**: Detailed JSON/HTML artifacts for each run
-- **Implementation**: `backend/evaluation/` directory
-- **Scope note**: Feedback loop to Data Sources is currently manual. Automated retraining/re-indexing loops are planned for future milestones.
-
-## Database Layer
-
-The system uses a **Hybrid RAG** storage architecture, leveraging **Neon PostgreSQL** for both vector and relational data.
-
-### 1. Vector Store (Embedding Retrieval)
-- **Implementation**: Neon PostgreSQL with `pgvector` extension.
-- **Purpose**: High-performance similarity search for document chunks.
-- **Index**: HNSW (Hierarchical Navigable Small World) for efficient approximate nearest neighbor search.
-- **Dimensionality**: 768 (matching Gemini Embedding 001).
-
-### 2. Relational Database (Future Proofing)
-- **Status**: Provisioned but currently minimal usage.
-- **Capabilities**: Ready for structured metadata, queryable logs, and application state.
-- **Current State**: The system is designed to be easily extensible to store chat history, user feedback, and detailed telemetry in relational tables side-by-side with the vectors.
-
-### Key Features
-
-- 🔍 **Semantic search** — Gemini embeddings with Neon PostgreSQL (`pgvector`)
-- 🧭 **LangGraph state machine** — Routed execution with conditional edges and retry paths
-- ✅ **Strict structured control nodes** — Schema-enforced Router/Planner/Validator outputs
-- ⚡ **Streaming** — Token-by-token SSE streaming for real-time responses
-- 📊 **Evaluation** — Built-in metrics framework (precision, recall, faithfulness)
-- 🎨 **Chat UI** — Dark-mode React frontend with source citations
-- 🐳 **Docker Compose** — One-command full-stack deployment
-- 🚀 **CI/CD** — Automated deploy to Cloud Run (backend) and Firebase Hosting (frontend)
-
-## RAG Plan Status
-
-- [x] Phase 1 MVP checklist complete (QueryState, router, planner, tool_orchestrator, writer, relevance/groundedness validator, single retry loop)
-- [x] LangGraph runtime integrated for orchestration
-- [x] Strict schema-based Router/Planner/Validator output wired through Gemini JSON mode
-- [x] Legacy SQLModel SQuAD ingestion path retained as an optional pipeline (not in main API runtime)
-- [ ] Phase 2 (agent layer, completeness and citation checks, richer failure policies)
-- [ ] Phase 3 (observability dashboards, caching/rate limiting, latency/cost tuning)
-
 ---
 
 ## Quick Start
 
-### Option 1: Docker Compose (Recommended)
+### Docker Compose (Recommended)
 
 ```bash
-# 1. Clone and configure
 git clone <repo-url> && cd coding-exercise
 cp backend/.env.example backend/.env
 # Edit backend/.env — set GEMINI_API_KEY and DATABASE_URL
 
-# 2. Start everything
 docker-compose up --build
+# Backend: http://localhost:8000  |  Frontend: http://localhost:5173
 
-# 3. Ingest documents
+# Ingest the SQuAD corpus (new terminal)
 curl -X POST http://localhost:8000/ingest
-
-# 4. Open the UI
-open http://localhost:5173
 ```
 
-### Option 2: Local Development
+### Local Development
 
-#### Backend (Terminal 1)
+<details>
+<summary><strong>Backend (Terminal 1)</strong></summary>
 
 ```bash
 cd backend
-python3 -m venv venv
-source venv/bin/activate
+python3 -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 
-# Configure your Gemini API key
 cp .env.example .env
-# Edit .env and set GEMINI_API_KEY + DATABASE_URL
+# Edit .env — set GEMINI_API_KEY and DATABASE_URL
 
-# Ingest the source documents into Neon PostgreSQL (pgvector)
-# Option A: Use the helper script (Recommended)
-python scripts/ingest.py
-
-# Option B: Use curl directly
-# curl -X POST http://localhost:8000/ingest
-
-# Start the backend server
-uvicorn main:app --reload
-# ✅ Backend running at http://localhost:8000
+python scripts/ingest.py          # ingest SQuAD corpus
+uvicorn main:app --reload         # http://localhost:8000
 ```
 
-#### Frontend (Terminal 2)
+</details>
+
+<details>
+<summary><strong>Frontend (Terminal 2)</strong></summary>
 
 ```bash
 cd frontend
 npm install
-# Optional: override API base for direct backend URL deployments
-# export VITE_API_BASE=https://your-backend-host
-npm run dev
-# ✅ Frontend running at http://localhost:5173
+npm run dev                       # http://localhost:5173
 ```
 
-> **Note:** Frontend requests default to `/api`.
-> - Local dev (Vite): `/api` is proxied to `http://localhost:8000`
-> - Docker (Nginx): `/api` is proxied to `http://backend:8000`
-> - Direct-backend deployments: set `VITE_API_BASE` at build time
+> Vite proxies `/api` → `http://localhost:8000` automatically.
+> For direct-backend deployments, set `VITE_API_BASE` at build time.
+
+</details>
 
 ---
 
-## API Endpoints
+## Running Tests
+
+All tests run **offline** — no API keys or database required.
+
+```bash
+# Backend (from repo root)
+cd backend && python3 -m pytest -q
+
+# Frontend
+cd frontend && npm test -- --run
+```
+
+---
+
+## Evaluation Framework
+
+The project includes a custom evaluation framework in `backend/evaluation/` that replaces heavier libraries like RAGAS with transparent, strict-schema LLM judges and heuristic metrics.
+
+| Component | File | Purpose |
+|-----------|------|---------|
+| **Runner** | `runner.py` | Automated evaluation engine with retry + exponential backoff |
+| **Judges** | `judges.py` | LLM-based Groundedness & Quality judges |
+| **Metrics** | `metrics.py`, `retrieval_metrics.py`, `answer_metrics.py`, `perf_metrics.py` | Precision, Recall, MRR, NDCG, latency, cost |
+| **Gates** | `check_gates.py` + `gates.yaml` | CI/CD quality gates with strict thresholds |
+| **Reports** | `reports/` | JSON artifacts per run (retrieval, answer, latency/cost, failures) |
+
+### Run an Evaluation
+
+```bash
+cd backend
+
+# Quick parity check (2 samples)
+python -m evaluation.runner --mode full_rag_with_judges --top-k 5 --limit 2
+
+# Full sweep
+python -m evaluation.runner --mode full_rag_with_judges --top-k 5
+```
+
+### Check Quality Gates
+
+```bash
+python -m evaluation.check_gates --scope retrieval   # should pass
+python -m evaluation.check_gates --scope full         # may fail on p95 latency — see Known Limitations
+```
+
+---
+
+## API Reference
 
 | Method | Path | Description |
 |--------|------|-------------|
-| `GET` | `/health` | Health check + model status |
+| `GET` | `/health` | Health check + model/index status |
 | `POST` | `/query` | RAG query (JSON response) |
 | `POST` | `/query/stream` | RAG query (SSE streaming) |
 | `GET` | `/documents` | List indexed documents |
 | `POST` | `/ingest` | Start async ingestion job |
 | `GET` | `/ingest/{job_id}` | Check ingestion job status |
-| `POST` | `/ingest/{job_id}/cancel` | Cancel ingestion (cooperative checkpoints) |
-| `POST` | `/ingest/{job_id}/retry` | Retry failed ingestion job |
-
-### Example Query
+| `POST` | `/ingest/{job_id}/cancel` | Cancel running ingestion |
+| `POST` | `/ingest/{job_id}/retry` | Retry failed ingestion |
+| `GET` | `/metrics` | Prometheus metrics |
 
 ```bash
+# Example query
 curl -X POST http://localhost:8000/query \
   -H "Content-Type: application/json" \
-  -d '{"query": "Why is centering a div so hard?", "top_k": 3}'
+  -d '{"query": "Which NFL team won Super Bowl 50?", "top_k": 3}'
 ```
-
----
-
-## GitHub Actions Deploy Secrets
-
-For backend auto-deploy (`.github/workflows/deploy-backend.yml`), set these repository secrets:
-
-- `GCP_PROJECT_ID`
-- `GCP_SA_KEY`
-- `GEMINI_API_KEY`
-- `DATABASE_URL` (Neon/Postgres connection string)
-
-Without `DATABASE_URL`, Cloud Run startup will fail when `VectorStoreService` initializes.
-
----
-
-## 📊 Evaluation & Quality Gates
-
-The project includes a custom evaluation framework located in `backend/evaluation/`. It replaces heavier libraries like RAGAS with transparent, strict-schema LLM judges and heuristic metrics.
-
-### 1. Running Evaluations
-
-Run limits or full sweeps using the runner CLI entrypoint:
-
-```bash
-cd backend
-# Run full evaluation (retrieval + LLM judges) with top-k=5
-python -m evaluation.runner --mode full_rag_with_judges --top-k 5 --limit 10
-
-# Run retrieval-only (faster, for experimenting with embeddings/chunking)
-python -m evaluation.runner --mode retrieval_only --top-k 5
-
-# Optional: run legacy/mixed benchmark explicitly
-python -m evaluation.runner --dataset evaluation/datasets/eval_v1.jsonl --mode retrieval_only --top-k 5
-```
-
-> You can also use `python -m evaluation.evaluate ...`; both entrypoints call the same evaluation runner.
-> Default dataset now targets the active SQuAD ingestion path: `evaluation/datasets/eval_squad_v1.jsonl`.
-
-### 2. Checking Quality Gates
-
-CI/CD pipelines enforce quality standards using `gates.yaml`. This script fails the build if metrics drop below baselines (regression) or absolute thresholds.
-
-```bash
-python -m evaluation.check_gates --scope full
-```
-
-### 3. Reports & Artifacts
-
-All runs generate artifacts in `backend/evaluation/reports/`:
-- **`retrieval_metrics.json`**: Precision, Recall, MRR, NDCG.
-- **`answer_metrics.json`**: Groundedness, Quality, Hallucination Rate.
-- **`latency_cost_metrics.json`**: P95 latency, cost per query, token usage.
-- **`examples_failed.jsonl`**: Specific cases that failed gates or retrieval.
 
 ---
 
 ## Tech Stack
 
 | Component | Technology |
-|-----------|-----------|
+|-----------|------------|
 | Backend | Python, FastAPI, Uvicorn, LangGraph |
-| Vector DB | Neon PostgreSQL + `pgvector` |
+| Vector DB | Neon PostgreSQL + `pgvector` (HNSW, 768-dim) |
 | Embeddings | Gemini Embedding (`gemini-embedding-001`) |
 | LLM | Google Gemini 2.0 Flash |
 | Frontend | React 18, Vite |
 | Infra | Docker Compose, Nginx, Cloud Run, Firebase Hosting |
+
+---
 
 ## Design Decisions
 
@@ -335,18 +209,7 @@ All runs generate artifacts in `backend/evaluation/reports/`:
 
 4. **Custom evaluation over RAGAS** — Lightweight, no heavy dependencies, and more transparent. Each metric is <30 lines and easy to understand.
 
----
-
-## Running Tests
-
-```bash
-# From repo root (recommended)
-python -m pytest backend/tests -v
-
-# Or from backend/
-cd backend
-python -m pytest tests/ -v
-```
+5. **LangGraph state machine** — Explicit, debuggable control flow with conditional edges and retry paths, instead of implicit chain composition.
 
 ---
 
@@ -355,60 +218,120 @@ python -m pytest tests/ -v
 ```
 coding-exercise/
 ├── backend/
-│   ├── main.py                  # FastAPI endpoints (query, stream, ingest, health)
-│   ├── config.py                # Pydantic settings from .env
-│   ├── models.py                # Request/response schemas
-│   ├── models_sql.py            # SQLModel schema definitions
-│   ├── database.py              # Database connection logic
-│   ├── Dockerfile               # Multi-stage backend container
-│   ├── deploy.sh                # Manual Cloud Run deploy script
-│   ├── requirements.txt         # Python dependencies (dev)
-│   ├── requirements-prod.txt    # Python dependencies (production)
-│   ├── check_embedding_dim.py   # Embedding dimension validator
-│   ├── .env.example             # Environment variable template
-│   ├── .dockerignore            # Docker build exclusions
+│   ├── main.py                     # FastAPI app — endpoints, lifespan, CORS, Prometheus
+│   ├── config.py                   # Pydantic settings from .env
+│   ├── database.py                 # SQLModel engine + table creation
+│   ├── models.py                   # API request/response schemas
+│   ├── models_ingest.py            # Ingestion job & batch DB models
+│   ├── models_observability.py     # Query observation DB models
+│   ├── models_sql.py               # SQLModel schema definitions
+│   ├── Dockerfile                  # Multi-stage backend container
+│   ├── deploy.sh                   # Manual Cloud Run deploy script
+│   ├── requirements.txt            # Python dependencies (dev)
+│   ├── requirements-prod.txt       # Python dependencies (production)
+│   ├── .env.example                # Environment variable template
 │   ├── services/
-│   │   ├── embedding.py         # Gemini embedding service (gemini-embedding-001)
-│   │   ├── vector_store.py      # Neon PostgreSQL pgvector operations
-│   │   ├── llm.py               # Gemini LLM integration + strict structured output helpers
-│   │   ├── query_guard.py       # User-query normalization and validation helpers
-│   │   └── rag.py               # LangGraph RAG pipeline orchestration
+│   │   ├── rag.py                  # LangGraph RAG pipeline (router → planner → tools → writer → validator)
+│   │   ├── llm.py                  # Gemini LLM client + strict structured output helpers
+│   │   ├── embedding.py            # Gemini embedding service (gemini-embedding-001)
+│   │   ├── vector_store.py         # Neon PostgreSQL pgvector operations
+│   │   ├── query_guard.py          # Input normalization and validation
+│   │   └── evaluation_policy.py    # Per-query evaluation policy decisions
 │   ├── data/
-│   │   ├── ingest.py            # Document chunking & ingestion
-│   │   ├── ingest_squad.py      # SQuAD dataset ingestion
-│   │   ├── verify_ingestion.py  # Ingestion verification script
-│   │   └── documents/           # Source files (currently JSON corpus)
+│   │   ├── ingest.py               # Document chunking & ingestion
+│   │   ├── ingest_squad.py         # SQuAD-specific ingestion logic
+│   │   ├── verify_ingestion.py     # Post-ingestion verification script
+│   │   ├── pipeline/
+│   │   │   ├── parser.py           # Source file parsers (SQuAD JSON)
+│   │   │   ├── chunker.py          # Text chunking with overlap
+│   │   │   ├── manager.py          # Pipeline orchestration & batch processing
+│   │   │   └── jobs.py             # Async job queue (create, poll, cancel, retry)
+│   │   └── documents/
+│   │       └── SQuAD-small.json    # Downsized SQuAD v1.1 corpus (~1.3 MB)
 │   ├── evaluation/
-│   │   ├── evaluate.py          # Evaluation runner
-│   │   ├── metrics.py           # Precision, recall, faithfulness metrics
-│   │   └── test_queries.json    # 12 curated test queries
-│   └── tests/
-│       ├── conftest.py          # Pytest fixtures
-│       ├── test_api.py          # API integration tests
-│       ├── test_rag.py          # RAG evaluation tests
-│       ├── test_rag_pipeline.py # RAG pipeline tests
-│       └── test_vector_store.py # Vector store unit tests
+│   │   ├── runner.py               # Evaluation engine (retry + backoff)
+│   │   ├── judges.py               # LLM-based Groundedness & Quality judges
+│   │   ├── metrics.py              # Precision, recall, faithfulness metrics
+│   │   ├── retrieval_metrics.py    # Retrieval-specific metrics (MRR, NDCG)
+│   │   ├── answer_metrics.py       # Answer-level metric aggregation
+│   │   ├── perf_metrics.py         # Latency & cost metrics
+│   │   ├── schemas.py              # Evaluation data schemas
+│   │   ├── evaluate.py             # CLI entrypoint (alias for runner)
+│   │   ├── check_gates.py          # Quality gate checker
+│   │   ├── gates.yaml              # Gate thresholds (recall, groundedness, latency, cost)
+│   │   ├── datasets/               # Evaluation datasets (.jsonl)
+│   │   ├── baselines/              # Baseline metrics for regression detection
+│   │   └── reports/                # Generated evaluation reports (JSON)
+│   ├── scripts/
+│   │   ├── ingest.py               # Helper: trigger & poll ingestion via API
+│   │   └── downsize_squad.py       # Helper: create SQuAD-small from full dataset
+│   └── tests/                      # 16 test files (pytest) — all run offline
 ├── frontend/
-│   ├── index.html               # Entry point
-│   ├── vite.config.js           # Vite config + API proxy
-│   ├── package.json             # Node dependencies
-│   ├── Dockerfile               # Multi-stage build (Vite → Nginx)
-│   ├── nginx.conf               # Nginx config for SPA + API proxy
-│   ├── firebase.json            # Firebase Hosting configuration
-│   ├── .firebaserc              # Firebase project binding
+│   ├── index.html                  # Entry point
+│   ├── vite.config.js              # Vite config + API proxy
+│   ├── package.json                # Node dependencies
+│   ├── Dockerfile                  # Multi-stage build (Vite → Nginx)
+│   ├── nginx.conf                  # Nginx config for SPA + API proxy
+│   ├── firebase.json               # Firebase Hosting configuration
+│   ├── .firebaserc                 # Firebase project binding
 │   └── src/
-│       ├── main.jsx             # React entry
-│       ├── App.jsx              # Main app + SSE streaming logic
-│       ├── index.css            # Global styles (dark theme)
+│       ├── main.jsx                # React entry
+│       ├── App.jsx                 # Main app + SSE streaming logic
+│       ├── App.test.jsx            # App component tests
+│       ├── index.css               # Global styles (dark theme)
 │       └── components/
 │           ├── ChatInterface.jsx   # Message list + empty state
 │           ├── Message.jsx         # Individual message rendering
 │           ├── QueryInput.jsx      # Auto-resizing textarea input
-│           └── SourceDocuments.jsx # Retrieved sources panel
-├── .github/
-│   └── workflows/
-│       ├── deploy-backend.yml   # CI/CD: Backend → Cloud Run
-│       └── deploy-frontend.yml  # CI/CD: Frontend → Firebase Hosting
-├── docker-compose.yml           # Backend + Frontend orchestration
+│           └── SourceDocuments.jsx  # Retrieved sources panel
+├── .github/workflows/
+│   ├── deploy-backend.yml          # CI/CD: Backend → Cloud Run
+│   ├── deploy-frontend.yml         # CI/CD: Frontend → Firebase Hosting
+│   ├── eval-backend.yml            # CI: Run evaluation + quality gates
+│   └── test-backend.yml            # CI: Run pytest suite
+├── docker-compose.yml              # Backend + Frontend orchestration
 └── README.md
 ```
+
+---
+
+## CI/CD
+
+| Workflow | Trigger | What it does |
+|----------|---------|-------------|
+| `deploy-backend.yml` | Push to `main` (backend changes) | Build → Test → Deploy to Cloud Run |
+| `deploy-frontend.yml` | Push to `main` (frontend changes) | Build → Deploy to Firebase Hosting |
+| `test-backend.yml` | Push / PR | Run `pytest` suite |
+| `eval-backend.yml` | Push / PR | Run evaluation + quality gates |
+
+**Required repository secrets:** `GCP_PROJECT_ID`, `GCP_SA_KEY`, `GEMINI_API_KEY`, `DATABASE_URL`
+
+---
+
+## Reviewer Notes
+
+### Credentials
+
+This project requires two environment variables:
+
+| Variable | Where to get it | Purpose |
+|----------|----------------|---------|
+| `GEMINI_API_KEY` | [Google AI Studio](https://aistudio.google.com/apikey) (free tier works) | Embeddings + LLM generation |
+| `DATABASE_URL` | [Neon](https://neon.tech) (free tier works) | PostgreSQL with `pgvector` |
+
+Sandbox credentials will be provided separately via a private channel. Do not commit secrets to git.
+
+### Reproducibility
+
+| Tier | What it tests | Requires credentials? |
+|------|--------------|----------------------|
+| **Offline** — `pytest` + `npm test` + `check_gates` on existing reports | Tests, lint, gate logic | ❌ No |
+| **Live** — Ingest → Query → Evaluate → Gates | Full end-to-end pipeline | ✅ Yes |
+
+- **Reproducibility contract:** Command behavior is deterministic. LLM text varies run-to-run — compare pass/fail outcomes and metric ranges, not exact wording.
+
+### Known Limitations
+
+1. **p95 latency gate** — The full gate enforces `p95 < 3500ms`. Gemini free-tier latency is ~4000ms, causing the full gate to fail. This is a performance finding, not a correctness bug. Retrieval accuracy and groundedness all pass.
+
+2. **Gemini free-tier rate limits** — Running evaluation with many samples may trigger `429` errors. Use `--limit` to cap sample count, wait 60s between runs, or use a paid API key.
