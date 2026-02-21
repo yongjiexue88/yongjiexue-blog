@@ -1,8 +1,10 @@
-# 🧠 RAG System — Retrieval-Augmented Generation
+# RAG System — Retrieval-Augmented Generation
 
 A full-stack RAG system that retrieves relevant documents from a vector database and generates grounded responses using Google Gemini. Features **LangGraph orchestration**, **strict structured routing/planning/validation**, **SSE streaming**, a **React chat UI**, and a **built-in evaluation framework**.
 
 > Built with FastAPI · LangGraph · Neon PostgreSQL (pgvector) · Google Gemini · React + Vite
+>
+> Live Demo: [yongjiexue.com](https://yongjiexue.com)
 
 > [!NOTE]
 > **Reviewers:** This project requires two environment variables (`GEMINI_API_KEY` and `DATABASE_URL`).
@@ -12,15 +14,15 @@ A full-stack RAG system that retrieves relevant documents from a vector database
 
 ## Key Features
 
-- 🔍 **Semantic search** — Gemini embeddings + Neon PostgreSQL (`pgvector`) with HNSW indexing
-- 🧭 **LangGraph state machine** — Routed execution: `ingest_query → router → planner → tool_orchestrator → writer → validator → finalize`
-- ✅ **Strict structured control nodes** — Schema-enforced Router / Planner / Validator with schema validation + retry
-- ⚡ **SSE streaming** — Token-by-token Server-Sent Events with real-time pipeline progress
-- 🛡️ **Query guard** — Input normalization, length limits, and safety routing (`direct`, `rag_simple`, `clarify`, `unsafe`)
-- 🔄 **Agentic retrieval loop** — Planner-directed `vector_search` + `rerank`, with replan & circuit-breaker fail-safe
-- 📊 **Evaluation framework** — Custom LLM judges (Groundedness, Quality), heuristic metrics, CI quality gates
-- 🐳 **One-command deploy** — Docker Compose (local) + Cloud Run / Firebase Hosting (production)
-- 📈 **Observability** — Prometheus metrics, per-query cost/token tracking, structured observation logs
+- **Semantic search** — Gemini embeddings + Neon PostgreSQL (`pgvector`) with HNSW indexing
+- **LangGraph state machine** — Routed execution: `ingest_query → router → planner → tool_orchestrator → writer → validator → finalize`
+- **Strict structured control nodes** — Schema-enforced Router / Planner / Validator with schema validation + retry
+- **SSE streaming** — Token-by-token Server-Sent Events with real-time pipeline progress
+- **Query guard** — Input normalization, length limits, and safety routing (`direct`, `rag_simple`, `clarify`, `unsafe`)
+- **Agentic retrieval loop** — Planner-directed `vector_search` + `rerank`, with replan & circuit-breaker fail-safe
+- **Evaluation framework** — Custom LLM judges (Groundedness, Quality), heuristic metrics, CI quality gates
+- **One-command deploy** — Docker Compose (local) + Cloud Run / Firebase Hosting (production)
+- **Observability** — Prometheus metrics, per-query cost/token tracking, structured observation logs
 
 ---
 
@@ -265,7 +267,7 @@ coding-exercise/
 │   ├── scripts/
 │   │   ├── ingest.py               # Helper: trigger & poll ingestion via API
 │   │   └── downsize_squad.py       # Helper: create SQuAD-small from full dataset
-│   └── tests/                      # 16 test files (pytest) — all run offline
+│   └── tests/                      # 14 test files (pytest) — all run offline
 ├── frontend/
 │   ├── index.html                  # Entry point
 │   ├── vite.config.js              # Vite config + API proxy
@@ -325,8 +327,8 @@ Sandbox credentials will be provided separately via a private channel. Do not co
 
 | Tier | What it tests | Requires credentials? |
 |------|--------------|----------------------|
-| **Offline** — `pytest` + `npm test` + `check_gates` on existing reports | Tests, lint, gate logic | ❌ No |
-| **Live** — Ingest → Query → Evaluate → Gates | Full end-to-end pipeline | ✅ Yes |
+| **Offline** — `pytest` + `npm test` + `check_gates` on existing reports | Tests, lint, gate logic | No |
+| **Live** — Ingest → Query → Evaluate → Gates | Full end-to-end pipeline | Yes |
 
 - **Reproducibility contract:** Command behavior is deterministic. LLM text varies run-to-run — compare pass/fail outcomes and metric ranges, not exact wording.
 
