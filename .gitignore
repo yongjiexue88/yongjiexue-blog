@@ -1,28 +1,16 @@
-# Python
-__pycache__/
-*.py[cod]
-*.egg-info/
-dist/
-build/
-.eggs/
-*.egg
-venv/
-.venv/
+# Dependencies
+node_modules/
 
 # Environment
 .env
-backend/.env
-frontend/.env.local
-**/gcp-sa-key.json
-frontend/.firebase/
+.env.local
+.env.*.local
 
-# ChromaDB
-chroma_db/
-backend/chroma_db/
-
-# Node
-node_modules/
-frontend/node_modules/
+# Build output
+dist/
+build/
+.next/
+out/
 
 # IDE
 .idea/
@@ -34,5 +22,6 @@ frontend/node_modules/
 .DS_Store
 Thumbs.db
 
-# Evaluation output
-evaluation_results.json
+# Logs
+*.log
+npm-debug.log*
