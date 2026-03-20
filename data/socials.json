@@ -1,0 +1,19 @@
+[
+  {
+    "title": "GitHub",
+    "link": "https://github.com/yongjiexue88/",
+    "icon": "/images/icons/github.svg",
+    "iconDark": "/images/icons/github-dark.svg"
+  },
+  {
+    "title": "Linkedin",
+    "link": "https://www.linkedin.com/in/yongjiexue/",
+    "icon": "/images/icons/linkedin-original.svg"
+  },
+  {
+    "title": "Email",
+    "link": "mailto:yongjiexue@gmail.com",
+    "icon": "/images/icons/email.svg",
+    "size": 1.25
+  }
+]

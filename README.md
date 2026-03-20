@@ -1,14 +1,38 @@
-# Yongjie Xue — Personal Blog
+# Yongjie Xue — Personal Portfolio & Blog
 
-A personal blog by [Yongjie Xue](https://yongjiexue.com).
+A personal portfolio and blog built with Next.js, TypeScript, and Tailwind CSS.
 
-## About
+🌐 **Live:** [yongjiexue.com](https://yongjiexue.com)
 
-This repository hosts the source code for my personal blog where I share thoughts on software engineering, technology, and more.
+## Tech Stack
+
+- **Framework:** Next.js 13 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS + Sass
+- **Animations:** Framer Motion
+- **State Management:** Redux Toolkit
+- **i18n:** next-intl
 
 ## Getting Started
 
-*Coming soon — blog platform setup instructions will be added here.*
+```bash
+npm install
+npm run dev
+# Open http://localhost:3000
+```
+
+## Project Structure
+
+```
+├── app/           # Next.js app router pages
+├── components/    # React components organized by section
+├── data/          # JSON data files (projects, skills, socials)
+├── messages/      # i18n translations
+├── public/        # Static assets (images, icons)
+├── settings/      # App configuration
+├── styles/        # Global styles and theme
+└── types/         # TypeScript type definitions
+```
 
 ## License
 

@@ -1,0 +1,120 @@
+{
+  "Header": {
+    "home": "Home",
+    "projects": "Projects",
+    "showcase": "Showcase",
+    "packages": "NPM Packages",
+    "contact": "Contact Me",
+    "blog": "Blog",
+    "en": "EN",
+    "jp": "JP"
+  },
+  "Intro": {
+    "pageTitle": "Rashid Shamloo's Portfolio",
+    "greeting": "Hello,",
+    "about": "I am passionate about delivering the best user experience using the latest cutting-edge technologies, I build robust, secure, and accessible websites that are interactive and fun to use. I am familiar with back-end technologies and integrate them into my workflow. I have excellent attention to detail and deliver a product that perfectly matches the design.",
+    "sendMessage": "Send me a message",
+    "iam": "I'm",
+    "name": "Rashid Shamloo",
+    "developer": "a developer",
+    "programmer": "a programmer",
+    "engineer": "an engineer",
+    "learner": "an avid learner",
+    "resume": "Check my resume"
+  },
+  "TechnologyAndPassion": {
+    "techTitle": "Technology",
+    "techText1": "helps us create better user experiences",
+    "techText2": "optimize performance, and ensure security",
+    "techText3": "implement the latest web standards, best practices, and design trends",
+    "techText4": "simplify and speed up the development process",
+    "passionTitle": "Passion and Human Touch",
+    "passionText1": "help us empathize with our users, understand their needs, and deliver value",
+    "passionText2": "communicate effectively, collaborate productively, and build trust",
+    "passionText3": "add personality, emotion, and creativity to our work",
+    "passionText4": "stay motivated, curious, and enthusiastic"
+  },
+  "Showcase": {
+    "photo": "Photo: ",
+    "slideTitle": "Japan's Attractions",
+    "flowersTitle": "Beautiful Flowers",
+    "fishTitle": "Playful Fish",
+    "pageTitle": "Showcase",
+    "pageInfo": "Most of the projects on this page are built using my own NPM packages. They demonstrate my ability to build innovative, customizable, reusable, visually stunning, and functionally robust components and applications.",
+    "topFooter1": "Made using the [react-next-parallax](https://www.npmjs.com/package/react-next-parallax) NPM package.",
+    "topFooter2": "Images by [Yuliya Pauliukevich](https://www.vecteezy.com/members/klyaksun) on [vecteezy.com](https://www.vecteezy.com/).",
+    "japanSliderFooter": "Made using the [swiper](https://www.npmjs.com/package/swiper), [swiper-mods](https://www.npmjs.com/package/swiper-mods), and [react-next-tilt](https://www.npmjs.com/package/react-next-tilt) NPM packages.",
+    "fishFooter1": "Made using the [react-flip-tilt](https://www.npmjs.com/package/react-flip-tilt) and [react-next-parallax](https://www.npmjs.com/package/react-next-parallax) NPM packages.",
+    "fishFooter2": "Images by [Yuliya Pauliukevich](https://www.vecteezy.com/members/klyaksun) on [vecteezy.com](https://www.vecteezy.com/).",
+    "flowersFooter1": "Made using the [react-flip-tilt](https://www.npmjs.com/package/react-flip-tilt) and [react-next-tilt](https://www.npmjs.com/package/react-next-tilt) NPM packages.",
+    "flowersFooter2": "Images by [Yuliya Pauliukevich](https://www.vecteezy.com/members/klyaksun) on [vecteezy.com](https://www.vecteezy.com/).",
+    "parallaxLine1": "Never stop learning",
+    "parallaxLine2": "Never give up"
+  },
+  "Projects": {
+    "pageTitle": "Projects",
+    "liveDemo": "Live Demo",
+    "sourceCode": "Source Code",
+    "backendSourceCode": "Back-end Source Code",
+    "design": "Design"
+  },
+  "MoreProjects": {
+    "title": "More Projects",
+    "github": "I have many more projects on my GitHub account. make sure to check it out.",
+    "frontendmentor": "I regularly do coding challenges on frontendmentor.io. you can see my progress over time."
+  },
+  "Packages": {
+    "pageTitle": "NPM Packages",
+    "npm": "NPM.js",
+    "sourceCode": "Source Code",
+    "blog": "Blog Post"
+  },
+  "Contact": {
+    "pageTitle": "Contact Me",
+    "formTitle": "Send me a message",
+    "placeholderName": "Your Name",
+    "placeholderEmail": "Email Address",
+    "placeholderMessage": "Message",
+    "errorNameEmpty": "Please enter your name",
+    "errorNameShort": "Name should be at least 2 characters long",
+    "errorEmailEmpty": "Please enter your email",
+    "errorEmailInvalid": "Please enter a valid email address",
+    "errorMessageEmpty": "Please enter a message",
+    "errorCaptcha": "Please solve the captcha",
+    "buttonSend": "Send Message",
+    "from": "from:",
+    "email": "email:",
+    "withLove": "with love",
+    "sending": "Sending ...",
+    "sent": "Sent!",
+    "error": "Error!"
+  },
+  "Social": {
+    "otherWaysToContactMe": "Other ways to contact me",
+    "linkedinTitle": "Linkedin",
+    "twitterTitle": "X",
+    "emailTitle": "Email",
+    "linkedin": "I'm always active on Linkedin. Feel free to send me a message or connection request.",
+    "twitter": "Whether you have a question or just want to say hello, feel free to send me a message on X (Twitter).",
+    "email": "You can also contact me directly by sending me an email."
+  },
+  "Blog": {
+    "featuredArticles": "Featured Articles",
+    "popularArticles": "Popular Articles",
+    "published": "Published",
+    "minutesRead": " minutes read",
+    "readTheFullArticle": "Read the full article"
+  },
+  "Footer": {
+    "navigation": "Site Navigation",
+    "sns": "Social Media",
+    "tech": "Built with",
+    "my": "Rashid Shamloo's",
+    "portfolio": "Portfolio"
+  },
+  "Error": {
+    "notFound": "Not Found",
+    "message": "Error: No route matches"
+  },
+  "Other": { "backToTop": "Back to Top" }
+}

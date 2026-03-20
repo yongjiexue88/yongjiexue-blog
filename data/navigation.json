@@ -1,0 +1,6 @@
+[
+  { "link": "/", "translation": "home" },
+  { "link": "/projects", "translation": "projects" },
+  { "link": "/contact", "translation": "contact" },
+  { "link": "/blog", "translation": "blog" }
+]
