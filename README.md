@@ -69,10 +69,15 @@ flowchart TB
 
 ## Quick Start
 
+### Prerequisites
+- Docker
+- Node.js 18+
+- Python 3.10+
+
 ### Docker Compose (Recommended)
 
 ```bash
-git clone <repo-url> && cd coding-exercise
+git clone https://github.com/yongjiexue88/yongjiexue-blog.git && cd yongjiexue-blog
 cp backend/.env.example backend/.env
 # Edit backend/.env — set GEMINI_API_KEY and DATABASE_URL
 
@@ -96,8 +101,11 @@ pip install -r requirements.txt
 cp .env.example .env
 # Edit .env — set GEMINI_API_KEY and DATABASE_URL
 
-python scripts/ingest.py          # ingest SQuAD corpus
+# Terminal 1: Start the backend server first
 uvicorn main:app --reload         # http://localhost:8000
+
+# Terminal 2: Once the backend is running, ingest the SQuAD corpus
+python scripts/ingest.py
 ```
 
 </details>
@@ -123,11 +131,13 @@ npm run dev                       # http://localhost:5173
 All tests run **offline** — no API keys or database required.
 
 ```bash
-# Backend (from repo root)
-cd backend && python3 -m pytest -q
+# Backend
+cd backend
+python3 -m pytest -q
 
-# Frontend
-cd frontend && npm test -- --run
+# Frontend (from a new terminal at repo root)
+cd frontend
+npm test -- --run
 ```
 
 ---
@@ -218,7 +228,7 @@ curl -X POST http://localhost:8000/query \
 ## Project Structure
 
 ```
-coding-exercise/
+yongjiexue-blog/
 ├── backend/
 │   ├── main.py                     # FastAPI app — endpoints, lifespan, CORS, Prometheus
 │   ├── config.py                   # Pydantic settings from .env
