@@ -1,0 +1,19 @@
+.layout-parallax-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0; /* Keep it in the background */
+  overflow: hidden;
+  pointer-events: none; /* Do not block clicks */
+
+  .parallax-wrapper {
+    width: 100%;
+    height: 100%;
+    
+    img {
+      pointer-events: none;
+    }
+  }
+}
