@@ -58,36 +58,14 @@
             "items": [
                 {
                     "id": 1,
-                    "faIcon": "fa-solid fa-phone",
-                    "faIconColors": {
-                        "bg": "",
-                        "fill": ""
-                    },
-                    "label": "+1 (123) 456-7890",
-                    "link": {
-                        "href": "tel:11234567890",
-                        "tooltipString": "call_me"
-                    },
-                    "copyToClipboardButton": true,
-                    "locales": {
-                        "en": {
-                            "title": "Phone"
-                        },
-                        "zh": {
-                            "title": "Phone"
-                        }
-                    }
-                },
-                {
-                    "id": 2,
                     "faIcon": "fa-solid fa-envelope",
                     "faIconColors": {
                         "bg": "",
                         "fill": ""
                     },
-                    "label": "mark.choi@email.com",
+                    "label": "yongjiexue88@gmail.com",
                     "link": {
-                        "href": "mailto:mark.choi@email.com",
+                        "href": "mailto:yongjiexue88@gmail.com",
                         "tooltipString": "email_me"
                     },
                     "copyToClipboardButton": true,
@@ -101,15 +79,15 @@
                     }
                 },
                 {
-                    "id": 3,
+                    "id": 2,
                     "faIcon": "fa-brands fa-linkedin",
                     "faIconColors": {
                         "bg": "",
                         "fill": ""
                     },
-                    "label": "@markchoi",
+                    "label": "in/yongjie-xue",
                     "link": {
-                        "href": "https://linkedin.com/in/",
+                        "href": "https://linkedin.com/in/yongjie-xue",
                         "tooltipString": "open_website"
                     },
                     "copyToClipboardButton": false,
@@ -119,72 +97,6 @@
                         },
                         "zh": {
                             "title": "LinkedIn"
-                        }
-                    }
-                },
-                {
-                    "id": 4,
-                    "faIcon": "fa-brands fa-facebook",
-                    "faIconColors": {
-                        "bg": "",
-                        "fill": ""
-                    },
-                    "label": "Mark Choi",
-                    "link": {
-                        "href": "https://facebook.com/profiles/mark.choi.855/default",
-                        "tooltipString": "open_website"
-                    },
-                    "copyToClipboardButton": false,
-                    "locales": {
-                        "en": {
-                            "title": "Facebook"
-                        },
-                        "zh": {
-                            "title": "Facebook"
-                        }
-                    }
-                },
-                {
-                    "id": 5,
-                    "faIcon": "fa-brands fa-instagram",
-                    "faIconColors": {
-                        "bg": "",
-                        "fill": ""
-                    },
-                    "label": "@codingmark",
-                    "link": {
-                        "href": "https://instagram.com/",
-                        "tooltipString": "open_website"
-                    },
-                    "copyToClipboardButton": false,
-                    "locales": {
-                        "en": {
-                            "title": "Instagram"
-                        },
-                        "zh": {
-                            "title": "Instagram"
-                        }
-                    }
-                },
-                {
-                    "id": 6,
-                    "faIcon": "fa-brands fa-tiktok",
-                    "faIconColors": {
-                        "bg": "",
-                        "fill": ""
-                    },
-                    "label": "@markchoi",
-                    "link": {
-                        "href": "https://tiktok.com/@markchoi",
-                        "tooltipString": "open_website"
-                    },
-                    "copyToClipboardButton": false,
-                    "locales": {
-                        "en": {
-                            "title": "TikTok"
-                        },
-                        "zh": {
-                            "title": "TikTok"
                         }
                     }
                 }

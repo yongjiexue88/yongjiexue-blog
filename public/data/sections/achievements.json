@@ -8,10 +8,10 @@
                 "title_long": "Career {{Achievements}}"
             },
             "zh": {
-                "title_short": "Awards",
-                "title_short_nav": "Achievements",
-                "title_long_prefix": "Here are my",
-                "title_long": "Career {{Achievements}}"
+                "title_short": "\u5956\u9879",
+                "title_short_nav": "\u4e3b\u8981\u6210\u5c31",
+                "title_long_prefix": "\u8fd9\u4e9b\u662f\u6211\u7684",
+                "title_long": "\u4e3b\u8981 {{\u6210\u5c31}}"
             }
         }
     },
@@ -24,7 +24,7 @@
                     "title": "Certifications"
                 },
                 "zh": {
-                    "title": "Certifications"
+                    "title": "\u4e13\u4e1a\u8ba4\u8bc1"
                 }
             },
             "settings": {
@@ -35,108 +35,54 @@
                 {
                     "id": 1,
                     "img": "",
-                    "faIcon": "fa-solid fa-life-ring",
+                    "faIcon": "fa-brands fa-meta",
                     "faIconColors": {
-                        "bg": "#326CE5",
+                        "bg": "#0668E1",
                         "fill": "#EEE"
                     },
                     "date": {
-                        "year": 2020,
-                        "month": 12
+                        "year": null,
+                        "month": null
                     },
                     "link": {
-                        "href": "https://www.linuxfoundation.org/",
-                        "tooltipString": "see_certification"
+                        "href": "",
+                        "tooltipString": ""
                     },
                     "locales": {
                         "en": {
-                            "title": "The {{Linux Foundation}}",
-                            "text": "Certified Kubernetes Administrator (CKA)"
+                            "title": "{{Meta}} Front-End Developer",
+                            "text": "Certified by Meta for mastery of React, UI/UX, and robust client-side development."
                         },
                         "zh": {
-                            "title": "The {{Linux Foundation}}",
-                            "text": "Certified Kubernetes Administrator (CKA)"
+                            "title": "{{Meta}} \u8ba4\u8bc1\u524d\u7aef\u5f00\u53d1\u8005",
+                            "text": "\u7531 Meta \u8ba4\u8bc1\uff0c\u638c\u63e1 React\u3001UI/UX \u4ee5\u53ca\u7a33\u5065\u7684\u5ba2\u6237\u7aef\u5f00\u53d1\u6280\u80fd\u3002"
                         }
                     }
                 },
                 {
                     "id": 2,
                     "img": "",
-                    "faIcon": "fa-brands fa-aws",
+                    "faIcon": "fa-brands fa-ubuntu",
                     "faIconColors": {
-                        "bg": "#FFD700",
-                        "fill": "#111"
-                    },
-                    "date": {
-                        "year": 2021,
-                        "month": 5
-                    },
-                    "link": {
-                        "href": "https://www.aws.com/",
-                        "tooltipString": "see_certification"
-                    },
-                    "locales": {
-                        "en": {
-                            "title": "{{Amazon}} Web Services",
-                            "text": "AWS Certified Solutions Architect – Associate"
-                        },
-                        "zh": {
-                            "title": "{{Amazon}} Web Services",
-                            "text": "AWS Certified Solutions Architect – Associate"
-                        }
-                    }
-                },
-                {
-                    "id": 3,
-                    "img": "",
-                    "faIcon": "fa-brands fa-java",
-                    "faIconColors": {
-                        "bg": "#007396",
+                        "bg": "#E95420",
                         "fill": "#EEE"
                     },
                     "date": {
-                        "year": 2022,
-                        "month": 5
+                        "year": null,
+                        "month": null
                     },
                     "link": {
-                        "href": "https://www.oracle.com/",
-                        "tooltipString": "see_certification"
+                        "href": "",
+                        "tooltipString": ""
                     },
                     "locales": {
                         "en": {
-                            "title": "{{Oracle}}",
-                            "text": "Certified Java Developer"
+                            "title": "{{IBM}} Applied DevOps Engineering",
+                            "text": "Specialization certificate highlighting proficiencies across CI/CD, Containerization, and Agile lifecycles."
                         },
                         "zh": {
-                            "title": "{{Oracle}}",
-                            "text": "Certified Java Developer"
-                        }
-                    }
-                },
-                {
-                    "id": 4,
-                    "img": "",
-                    "faIcon": "fa-solid fa-database",
-                    "faIconColors": {
-                        "bg": "#47A248",
-                        "fill": "#EEE"
-                    },
-                    "date": {
-                        "year": 2023,
-                        "month": 8
-                    },
-                    "link": {
-                        "href": "https://www.mongodb.com/",
-                        "tooltipString": "see_certification"
-                    },
-                    "locales": {
-                        "en": {
-                            "title": "{{MongoDB}} University",
-                            "text": "MongoDB Certified Developer"
-                        },
-                        "zh": {
-                            "title": "{{MongoDB}} University",
-                            "text": "MongoDB Certified Developer"
+                            "title": "{{IBM}} \u5b9e\u7528 DevOps \u5de5\u7a0b",
+                            "text": "\u5c55\u73b0\u4e86\u5728 CI/CD\uff0c\u5bb9\u5668\u5316\u4ee5\u53ca\u654f\u6377\u751f\u547d\u5468\u671f\u7ba1\u7406\u4e0a\u7684\u7cbe\u4e13\u6280\u80fd\u3002"
                         }
                     }
                 }
@@ -147,10 +93,10 @@
             "component": "ArticleThread",
             "locales": {
                 "en": {
-                    "title": "Awards"
+                    "title": "Academic Publications"
                 },
                 "zh": {
-                    "title": "Awards"
+                    "title": "\u5b66\u672f\u53d1\u8868"
                 }
             },
             "settings": {
@@ -162,182 +108,62 @@
                 {
                     "id": 1,
                     "date": {
-                        "year": 2019,
-                        "month": 9
+                        "year": 2023,
+                        "month": 6
                     },
                     "preview": {
-                        "links": [
-                            {
-                                "href": "https://mag.wcoomd.org/uploads/2018/05/blank.pdf",
-                                "tooltipString": "read",
-                                "faIcon": "fa-solid fa-file-pdf"
-                            }
-                        ],
+                        "links": [],
                         "screenshots": [],
                         "screenshotsAspectRatio": "",
                         "youtubeVideo": ""
                     },
                     "locales": {
                         "en": {
-                            "title": "{{Best Graduation Project}} – Backend Optimization",
-                            "province": "Massachusetts",
-                            "country": "US",
-                            "institution": "MIT",
-                            "text": "Awarded for outstanding performance in optimizing backend systems during my final year project where I improved the efficiency of data processing by 30%. I have also received a certificate of recognition for this achievement."
+                            "title": "{{CoMap}}: Proactive Provision for Crowdsourcing Map in Automotive Edge Computing",
+                            "province": "",
+                            "country": "",
+                            "institution": "IEEE International Conference on Communications",
+                            "text": "Authored and presented a novel architecture aiming to proactively provision high-definition map data using computation and storage layers available at the automotive edge.",
+                            "list": []
                         },
                         "zh": {
-                            "title": "{{Best Graduation Project}} – Backend Optimization",
-                            "province": "Massachusetts",
-                            "country": "US",
-                            "institution": "MIT",
-                            "text": "Awarded for outstanding performance in optimizing backend systems during my final year project where I improved the efficiency of data processing by 30%. I have also received a certificate of recognition for this achievement."
+                            "title": "{{CoMap}}: \u6c7d\u8f66\u8fb9\u7f18\u8ba1\u7b97\u4e2d\u4f17\u5305\u5730\u56fe\u7684\u4e3b\u52a8\u914d\u7f6e",
+                            "province": "",
+                            "country": "",
+                            "institution": "IEEE \u56fd\u9645\u901a\u4fe1\u4f1a\u8bae",
+                            "text": "\u7f16\u5199\u5e76\u6f14\u793a\u4e86\u4e00\u79cd\u5168\u65b0\u7684\u67b6\u6784\uff0c\u65e8\u5728\u901a\u8fc7\u6c7d\u8f66\u8fb9\u7f18\u7684\u8ba1\u7b97\u548c\u5b58\u50a8\u5c42\u7ea7\uff0c\u4e3b\u52a8\u914d\u7f6e\u548c\u5206\u53d1\u5546\u7528\u9ad8\u7cbe\u5ea6\u5730\u56fe\u6570\u636e\u3002",
+                            "list": []
                         }
                     }
                 },
                 {
                     "id": 2,
                     "date": {
-                        "year": 2020,
-                        "month": 5
-                    },
-                    "preview": {
-                        "links": [
-                            {
-                                "href": "https://github.com/ryanbalieiro/react-portfolio-template",
-                                "tooltipString": "see_on_github",
-                                "faIcon": "fa-brands fa-github"
-                            },
-                            {
-                                "href": "https://www.linuxfoundation.org/",
-                                "tooltipString": "open_website",
-                                "faIcon": "fa-brands fa-linux"
-                            }
-                        ],
-                        "screenshots": [],
-                        "screenshotsAspectRatio": "",
-                        "youtubeVideo": ""
-                    },
-                    "locales": {
-                        "en": {
-                            "title": "{{Top Contributor}} – Open Source Linux Foundation Project",
-                            "province": "",
-                            "country": "",
-                            "institution": "Linux Foundation",
-                            "text": "Recognized as a top contributor for my significant contributions to an open source project under the Linux Foundation, where I implemented key features and resolved critical bugs, enhancing the project's stability and performance. My contributions involved: ",
-                            "list": [
-                                "Implementing a new feature that improved user experience by 25%",
-                                "Resolving over 50 critical bugs that enhanced system reliability",
-                                "Contributing to the documentation and community support"
-                            ]
-                        },
-                        "zh": {
-                            "title": "{{Top Contributor}} – Open Source Linux Foundation Project",
-                            "province": "",
-                            "country": "",
-                            "institution": "Linux Foundation",
-                            "text": "Recognized as a top contributor for my significant contributions to an open source project under the Linux Foundation, where I implemented key features and resolved critical bugs, enhancing the project's stability and performance. My contributions involved: ",
-                            "list": [
-                                "Implementing a new feature that improved user experience by 25%",
-                                "Resolving over 50 critical bugs that enhanced system reliability",
-                                "Contributing to the documentation and community support"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "id": 3,
-                    "date": {
-                        "year": 2022,
+                        "year": 2023,
                         "month": 11
                     },
                     "preview": {
-                        "links": [
-                            {
-                                "href": "https://medium.com",
-                                "tooltipString": "open_website",
-                                "faIcon": "fa-brands fa-medium"
-                            },
-                            {
-                                "href": "https://www.ieee.org/",
-                                "tooltipString": "open_website",
-                                "faIcon": "fa-solid fa-award"
-                            },
-                            {
-                                "href": "https://www.acm.org/",
-                                "tooltipString": "open_website",
-                                "faIcon": "fa-solid fa-trophy"
-                            }
-                        ],
+                        "links": [],
                         "screenshots": [],
                         "screenshotsAspectRatio": "",
                         "youtubeVideo": ""
                     },
                     "locales": {
                         "en": {
-                            "title": "{{Best Paper}} – International Summit",
-                            "province": "Beijing",
-                            "country": "China",
-                            "institution": "IEEE",
-                            "text": "Awarded for my research paper on software optimization techniques, which was presented at the International Conference on Software Engineering. The paper received positive feedback from industry experts and was published in the conference proceedings."
+                            "title": "{{AdaMap}}: High-Scalable Real-Time Cooperative Perception at the Edge",
+                            "province": "",
+                            "country": "",
+                            "institution": "IEEE/ACM SEC",
+                            "text": "Published research on real-time cooperative perception frameworks optimizing communication costs and increasing scalable safety properties across multi-agent autonomous driving scenarios.",
+                            "list": []
                         },
                         "zh": {
-                            "title": "{{Best Paper}} – International Summit",
-                            "province": "Beijing",
-                            "country": "China",
-                            "institution": "IEEE",
-                            "text": "Awarded for my research paper on software optimization techniques, which was presented at the International Conference on Software Engineering. The paper received positive feedback from industry experts and was published in the conference proceedings."
-                        }
-                    }
-                },
-                {
-                    "id": 4,
-                    "date": {
-                        "year": 2024,
-                        "month": 6
-                    },
-                    "preview": {
-                        "links": [
-                            {
-                                "href": "https://medium.com",
-                                "tooltipString": "open_website",
-                                "faIcon": "fa-brands fa-medium"
-                            }
-                        ],
-                        "screenshots": [
-                            "images/pictures/screenshot-demo-square-1.jpg",
-                            "images/pictures/screenshot-demo-square-2.jpg",
-                            "images/pictures/screenshot-demo-square-3.jpg",
-                            "images/pictures/screenshot-demo-square-4.jpg",
-                            "images/pictures/screenshot-demo-square-5.jpg",
-                            "images/pictures/screenshot-demo-square-6.jpg"
-                        ],
-                        "screenshotsAspectRatio": "1:1",
-                        "youtubeVideo": "https://www.youtube.com/watch?v=RGTfS-48Gf0"
-                    },
-                    "locales": {
-                        "en": {
-                            "title": "{{Best Innovator}} – Tech Innovation Summit",
-                            "province": "Rio de Janeiro",
-                            "country": "Brazil",
-                            "institution": "Tech Innovators Brazil",
-                            "text": "Recognized as the [[best innovator]] for my groundbreaking work in developing a new software tool that significantly improved data analysis processes. The tool was adopted by several leading companies in the industry, and I received a certificate of recognition for my contributions. My tool featured the following innovations: ",
-                            "list": [
-                                "Real-time data processing capabilities",
-                                "User-friendly interface that reduced training time by 50%",
-                                "Integration with popular data visualization tools"
-                            ]
-                        },
-                        "zh": {
-                            "title": "{{Best Innovator}} – Tech Innovation Summit",
-                            "province": "Rio de Janeiro",
-                            "country": "Brazil",
-                            "institution": "Tech Innovators Brazil",
-                            "text": "Recognized as the [[best innovator]] for my groundbreaking work in developing a new software tool that significantly improved data analysis processes. The tool was adopted by several leading companies in the industry, and I received a certificate of recognition for my contributions. My tool featured the following innovations: ",
-                            "list": [
-                                "Real-time data processing capabilities",
-                                "User-friendly interface that reduced training time by 50%",
-                                "Integration with popular data visualization tools"
-                            ]
+                            "title": "{{AdaMap}}: \u8fb9\u7f18\u73af\u5883\u4e0b\u7684\u9ad8\u6269\u5c55\u5b9e\u65f6\u534f\u540c\u611f\u77e5",
+                            "province": "",
+                            "country": "",
+                            "institution": "IEEE/ACM SEC",
+                            "text": "\u53d1\u8868\u4e86\u4e00\u9879\u5173\u4e8e\u5b9e\u65f6\u534f\u4f5c\u611f\u77e5\u6846\u67b6\u7684\u7814\u7a76\uff0c\u4e3b\u8981\u5173\u4e8e\u5728\u591a\u667a\u80fd\u4f53\u81ea\u52a8\u9a7e\u9a76\u573a\u666f\u4e0b\uff0c\u5982\u4f55\u4f18\u5316\u901a\u4fe1\u6210\u672c\u5e76\u63d0\u9ad8\u53ef\u6269\u5c55\u7684\u5b89\u5168\u7279\u6027\u3002",
+                            "list": []
                         }
                     }
                 }

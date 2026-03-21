@@ -8,13 +8,13 @@ import { Parallax } from 'react-next-parallax'
  * create a rich 3D effect on mouse movement.
  */
 const defaultItems = [
-    { offset: -4.5, img: 'images/showcase/balloon_light/01.webp' },
-    { offset: -3,   img: 'images/showcase/balloon_light/03.webp' },
-    { offset: -2,   img: 'images/showcase/balloon_light/02.webp' },
-    { offset: -1,   img: 'images/showcase/balloon_light/04.webp' },
-    { offset:  2,   img: 'images/showcase/balloon_light/07.webp' },
-    { offset:  3,   img: 'images/showcase/balloon_light/05.webp' },
-    { offset:  4.5, img: 'images/showcase/balloon_light/08.webp' },
+    { offset: -4.5, img: 'images/showcase/tech_hero/tech_04.png' }, // Particles (back)
+    { offset: -3,   img: 'images/showcase/tech_hero/tech_03.png' }, // Nano elements
+    { offset: -2,   img: 'images/showcase/tech_hero/tech_02.png' }, // Banana
+    { offset: -1,   img: 'images/showcase/tech_hero/tech_01.png' }, // Gemini Logo (center)
+    { offset:  2,   img: 'images/showcase/tech_hero/tech_02.png' }, // Banana (front)
+    { offset:  3,   img: 'images/showcase/tech_hero/tech_03.png' }, // Nano elements (front)
+    { offset:  4.5, img: 'images/showcase/tech_hero/tech_04.png' }, // Particles (front)
 ]
 
 function ParallaxBalloonHero({ items = defaultItems }) {
@@ -43,10 +43,10 @@ function ParallaxBalloonHero({ items = defaultItems }) {
                     ))}
                 </div>
 
-                {/* Floating balloon outside the clipped area */}
+                {/* Floating tech banana outside the clipped area */}
                 <img
                     data-parallax-offset="4.5"
-                    src="images/showcase/balloon_light/06.webp"
+                    src="images/showcase/tech_hero/tech_02.png"
                     className="parallax-balloon-img parallax-balloon-floating"
                     alt=""
                 />

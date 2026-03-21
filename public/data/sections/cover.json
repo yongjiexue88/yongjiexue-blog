@@ -5,13 +5,13 @@
                 "title_short": "Welcome!",
                 "title_short_nav": "About me",
                 "title_long_prefix": "Hello...",
-                "title_long": "I'm {{Mark Choi!}}"
+                "title_long": "I'm {{Yongjie Xue!}}"
             },
             "zh": {
                 "title_short": "欢迎！",
                 "title_short_nav": "关于我",
                 "title_long_prefix": "你好...",
-                "title_long": "我是 {{Mark Choi！}}"
+                "title_long": "我是 {{薛勇杰！}}"
             }
         }
     },
@@ -28,7 +28,7 @@
             "items": [
                 {
                     "id": 1,
-                    "label": "Cupertino – CA",
+                    "label": "Austin, TX",
                     "link": {
                         "href": "",
                         "tooltipString": ""
@@ -37,21 +37,21 @@
                 },
                 {
                     "id": 2,
-                    "label": "mark.choi@dev.com",
+                    "label": "yongjiexue88@gmail.com",
                     "link": {
-                        "href": "mailto:mark.choi@dev.com",
+                        "href": "mailto:yongjiexue88@gmail.com",
                         "tooltipString": "email_me"
                     },
                     "faIcon": "fa-regular fa-envelope"
                 },
                 {
                     "id": 3,
-                    "label": "@ryanbalieiro",
+                    "label": "in/yongjie-xue",
                     "link": {
-                        "href": "https://github.com/ryanbalieiro",
-                        "tooltipString": "see_on_github"
+                        "href": "https://linkedin.com/in/yongjie-xue",
+                        "tooltipString": "open_website"
                     },
-                    "faIcon": "fa-brands fa-github"
+                    "faIcon": "fa-brands fa-linkedin"
                 }
             ]
         },
@@ -73,7 +73,7 @@
             "items": [
                 {
                     "id": 1,
-                    "img": "images/pictures/about-texts-image-1.png",
+                    "img": "images/pictures/about_me_tech.png",
                     "faIcon": "",
                     "faIconColors": {
                         "bg": "",
@@ -81,10 +81,10 @@
                     },
                     "locales": {
                         "en": {
-                            "text": "<p>I’m a {{PHP}} developer with [[over a decade]] of experience, specializing in backend development with some frontend work as well. I also have hands-on experience with C++, C#, Go, and Python in production environments.</p><p>This diverse background gives me the flexibility to adapt to a wide range of project needs, whether it's building scalable APIs, optimizing system performance, or contributing to full-stack solutions.</p><p>I look forward to collaborating [[with you!]]</p>"
+                            "text": "<p>I’m a {{Full Stack Engineer}} with [[5 years of experience]] building real-time communication and cloud-native applications across telecom, SaaS, and medical devices.</p><p>I am experienced in React/Angular, Node.js, and GCP, with a track record of improving latency, reliability, and developer productivity in production systems serving thousands of daily sessions.</p><p>I look forward to collaborating [[with you!]]</p>"
                         },
                         "zh": {
-                            "text": "<p>I’m a {{PHP}} developer with [[over a decade]] of experience, specializing in backend development with some frontend work as well. I also have hands-on experience with C++, C#, Go, and Python in production environments.</p><p>This diverse background gives me the flexibility to adapt to a wide range of project needs, whether it's building scalable APIs, optimizing system performance, or contributing to full-stack solutions.</p><p>I look forward to collaborating [[with you!]]</p>"
+                            "text": "<p>我是一名拥有 [[5 年经验]] 的 {{全栈工程师}}，擅长在电信、SaaS 和医疗设备领域构建实时通信和云原生应用。</p><p>我精通 React/Angular、Node.js 和 GCP（谷歌云平台），在改善支撑每日数千次会话的生产系统延迟、可靠性和开发者生产力方面拥有出色的成绩。</p><p>期待与您 [[合作！]]</p>"
                         }
                     }
                 }
@@ -122,11 +122,11 @@
                     "locales": {
                         "en": {
                             "title": "CEO at [[SalesForce]]",
-                            "text": "Working with Mark was a truly [[transformative experience]]. His outstanding programming skills and collaborative spirit not only elevated the quality of our project but also brought a renewed sense of motivation and purpose to us."
+                            "text": "Working with Yongjie was a truly [[transformative experience]]. His outstanding programming skills and collaborative spirit not only elevated the quality of our project but also brought a renewed sense of motivation and purpose to us."
                         },
                         "zh": {
                             "title": "CEO at [[SalesForce]]",
-                            "text": "Working with Mark was a truly [[transformative experience]]. His outstanding programming skills and collaborative spirit not only elevated the quality of our project but also brought a renewed sense of motivation and purpose to us."
+                            "text": "Working with Yongjie was a truly [[transformative experience]]. His outstanding programming skills and collaborative spirit not only elevated the quality of our project but also brought a renewed sense of motivation and purpose to us."
                         }
                     }
                 },
@@ -146,11 +146,11 @@
                     "locales": {
                         "en": {
                             "title": "Lead Developer at [[GitHub]]",
-                            "text": "Having Mark on our team was an invaluable asset. His [[deep programming insights and mentorship]] not only elevated our projects but also empowered us to tackle every challenge with confidence and creativity."
+                            "text": "Having Yongjie on our team was an invaluable asset. His [[deep programming insights and mentorship]] not only elevated our projects but also empowered us to tackle every challenge with confidence and creativity."
                         },
                         "zh": {
                             "title": "Lead Developer at [[GitHub]]",
-                            "text": "Having Mark on our team was an invaluable asset. His [[deep programming insights and mentorship]] not only elevated our projects but also empowered us to tackle every challenge with confidence and creativity."
+                            "text": "Having Yongjie on our team was an invaluable asset. His [[deep programming insights and mentorship]] not only elevated our projects but also empowered us to tackle every challenge with confidence and creativity."
                         }
                     }
                 },
@@ -170,11 +170,11 @@
                     "locales": {
                         "en": {
                             "title": "Managing Director at [[Dingga]]",
-                            "text": "Collaborating with Mark was a true [[game changer]] for our entire development process. His [[deep technical expertise]], creative problem-solving, and proactive mindset were absolutely invaluable."
+                            "text": "Collaborating with Yongjie was a true [[game changer]] for our entire development process. His [[deep technical expertise]], creative problem-solving, and proactive mindset were absolutely invaluable."
                         },
                         "zh": {
                             "title": "Managing Director at [[Dingga]]",
-                            "text": "Collaborating with Mark was a true [[game changer]] for our entire development process. His [[deep technical expertise]], creative problem-solving, and proactive mindset were absolutely invaluable."
+                            "text": "Collaborating with Yongjie was a true [[game changer]] for our entire development process. His [[deep technical expertise]], creative problem-solving, and proactive mindset were absolutely invaluable."
                         }
                     }
                 },
@@ -194,11 +194,11 @@
                     "locales": {
                         "en": {
                             "title": "Creative Director at [[Dribbble]]",
-                            "text": "Mark Choi's [[attention to detail]] and his [[innovative thinking]] brought a fresh perspective to our whole design process! Simply amazing!"
+                            "text": "Yongjie Xue's [[attention to detail]] and his [[innovative thinking]] brought a fresh perspective to our whole design process! Simply amazing!"
                         },
                         "zh": {
                             "title": "Creative Director at [[Dribbble]]",
-                            "text": "Mark Choi's [[attention to detail]] and his [[innovative thinking]] brought a fresh perspective to our whole design process! Simply amazing!"
+                            "text": "Yongjie Xue's [[attention to detail]] and his [[innovative thinking]] brought a fresh perspective to our whole design process! Simply amazing!"
                         }
                     }
                 }

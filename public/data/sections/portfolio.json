@@ -5,13 +5,13 @@
                 "title_short": "Portfolio",
                 "title_short_nav": "Portfolio",
                 "title_long_prefix": "Take a look at",
-                "title_long": "My {{Portfolio}}"
+                "title_long": "My {{Projects}}"
             },
             "zh": {
-                "title_short": "Portfolio",
-                "title_short_nav": "Portfolio",
-                "title_long_prefix": "Take a look at",
-                "title_long": "My {{Portfolio}}"
+                "title_short": "\u9879\u76ee\u7ec4\u5408",
+                "title_short_nav": "\u9879\u76ee\u7ec4\u5408",
+                "title_long_prefix": "\u6b22\u8fce\u770b\u770b",
+                "title_long": "\u6211\u7684 {{\u9879\u76ee\u96c6}}"
             }
         }
     },
@@ -22,22 +22,19 @@
             "locales": {
                 "en": {
                     "category_all": "All",
-                    "category_apps": "Apps",
-                    "category_web": "Web",
-                    "category_utilities": "Utilities"
+                    "category_ai": "AI & ML",
+                    "category_fullstack": "Full Stack"
                 },
                 "zh": {
-                    "category_all": "All",
-                    "category_apps": "Apps",
-                    "category_web": "Web",
-                    "category_utilities": "Utilities"
+                    "category_all": "\u5168\u90e8",
+                    "category_ai": "AI \u4e0e\u673a\u5668\u5b66\u4e60",
+                    "category_fullstack": "\u5168\u6808\u5f00\u53d1"
                 }
             },
             "settings": {
                 "categorize_by": [
-                    "category_apps",
-                    "category_web",
-                    "category_utilities"
+                    "category_fullstack",
+                    "category_ai"
                 ],
                 "order_items_by": "id",
                 "order_items_sort": "asc"
@@ -45,421 +42,76 @@
             "items": [
                 {
                     "id": 1,
-                    "categoryId": "category_utilities",
-                    "img": "images/pictures/portfolio-project-logo-3.png",
-                    "faIcon": "",
+                    "categoryId": "category_fullstack",
+                    "img": "",
+                    "faIcon": "fa-solid fa-graduation-cap",
                     "faIconColors": {
-                        "bg": "",
-                        "fill": ""
+                        "bg": "#4361ee",
+                        "fill": "#ffffff"
                     },
                     "preview": {
-                        "links": [
-                            {
-                                "href": "https://github.com",
-                                "tooltipString": "see_on_github",
-                                "faIcon": "fa-brands fa-github"
-                            },
-                            {
-                                "href": "https://npm.com",
-                                "tooltipString": "see_on_npm",
-                                "faIcon": "fa-brands fa-npm"
-                            }
-                        ],
-                        "screenshots": [
-                            "images/pictures/screenshot-demo-landscape-1.png",
-                            "images/pictures/screenshot-demo-landscape-2.png",
-                            "images/pictures/screenshot-demo-landscape-3.png",
-                            "images/pictures/screenshot-demo-landscape-4.png",
-                            "images/pictures/screenshot-demo-landscape-5.png"
-                        ],
-                        "screenshotsAspectRatio": "16:9",
-                        "youtubeVideo": "https://www.youtube.com/watch?v=PnV8p1xm7-o"
+                        "links": [],
+                        "screenshots": [],
+                        "screenshotsAspectRatio": "",
+                        "youtubeVideo": ""
                     },
                     "locales": {
                         "en": {
-                            "title": "BrainPulse",
-                            "text": "A <b>RESTful API</b> backend built with <b>Node.js</b>, designed for high-performance data processing and real-time event handling.",
+                            "title": "LearningAier",
+                            "text": "A multi-tenant AI study platform built with <b>React 18</b> and a <b>FastAPI</b> backend on GCP. Features include real-time sync with Firestore, context-aware PDF Q&A via Pinecone, and automated CI/CD.",
                             "tags": [
-                                "API",
-                                "REST",
-                                "Backend"
+                                "React 18",
+                                "FastAPI",
+                                "GCP",
+                                "Pinecone"
                             ]
                         },
                         "zh": {
-                            "title": "BrainPulse",
-                            "text": "A <b>RESTful API</b> backend built with <b>Node.js</b>, designed for high-performance data processing and real-time event handling.",
+                            "title": "LearningAier",
+                            "text": "\u57fa\u4e8e <b>React 18</b> \u548c GCP <b>FastAPI</b> \u540e\u7aef\u6784\u5efa\u7684\u591a\u79df\u6237 AI \u5b66\u4e60\u5e73\u53f0\u3002\u529f\u80fd\u5305\u62ec Firestore \u5b9e\u65f6\u540c\u6b65\u3001\u57fa\u4e8e Pinecone \u7684 PDF \u6587\u6863\u667a\u80fd\u95ee\u7b54\u4ee5\u53ca\u81ea\u52a8\u5316 CI/CD\u3002",
                             "tags": [
-                                "API",
-                                "REST",
-                                "Backend"
+                                "React 18",
+                                "FastAPI",
+                                "GCP",
+                                "Pinecone"
                             ]
                         }
                     }
                 },
                 {
                     "id": 2,
-                    "categoryId": "category_apps",
-                    "img": "images/pictures/portfolio-project-logo-7.png",
-                    "faIcon": "",
-                    "faIconColors": {
-                        "bg": "",
-                        "fill": ""
-                    },
-                    "preview": {
-                        "links": [
-                            {
-                                "href": "https://apple.com",
-                                "tooltipString": "see_on_app_store",
-                                "faIcon": "fa-brands fa-apple"
-                            },
-                            {
-                                "href": "https://google.com",
-                                "tooltipString": "see_on_google_play",
-                                "faIcon": "fa-brands fa-google-play"
-                            }
-                        ],
-                        "screenshots": [
-                            "images/pictures/screenshot-demo-portrait-1.png",
-                            "images/pictures/screenshot-demo-portrait-2.png",
-                            "images/pictures/screenshot-demo-portrait-3.png",
-                            "images/pictures/screenshot-demo-portrait-4.png",
-                            "images/pictures/screenshot-demo-portrait-5.png",
-                            "images/pictures/screenshot-demo-portrait-6.png"
-                        ],
-                        "screenshotsAspectRatio": "9:16",
-                        "youtubeVideo": "https://www.youtube.com/watch?v=TfgBHC5gvTI"
-                    },
-                    "locales": {
-                        "en": {
-                            "title": "MailM8",
-                            "text": "A cross-platform email client built with <b>Flutter</b>, providing efficient communication with an intuitive UI for <b>managing emails</b>.",
-                            "tags": [
-                                "Flutter",
-                                "E-mail",
-                                "Communication"
-                            ]
-                        },
-                        "zh": {
-                            "title": "MailM8",
-                            "text": "A cross-platform email client built with <b>Flutter</b>, providing efficient communication with an intuitive UI for <b>managing emails</b>.",
-                            "tags": [
-                                "Flutter",
-                                "邮箱",
-                                "Communication"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "id": 3,
-                    "categoryId": "category_apps",
-                    "img": "images/pictures/portfolio-project-logo-6.png",
-                    "faIcon": "",
-                    "faIconColors": {
-                        "bg": "",
-                        "fill": ""
-                    },
-                    "preview": {
-                        "links": [
-                            {
-                                "href": "https://apple.com",
-                                "tooltipString": "see_on_app_store",
-                                "faIcon": "fa-brands fa-apple"
-                            },
-                            {
-                                "href": "https://google.com",
-                                "tooltipString": "see_on_google_play",
-                                "faIcon": "fa-brands fa-google-play"
-                            }
-                        ],
-                        "screenshots": [
-                            "images/pictures/screenshot-demo-landscape-1.png",
-                            "images/pictures/screenshot-demo-landscape-2.png",
-                            "images/pictures/screenshot-demo-landscape-3.png",
-                            "images/pictures/screenshot-demo-landscape-4.png",
-                            "images/pictures/screenshot-demo-landscape-5.png"
-                        ],
-                        "screenshotsAspectRatio": "16:9",
-                        "youtubeVideo": ""
-                    },
-                    "locales": {
-                        "en": {
-                            "title": "Light Blue",
-                            "text": "A fully-featured productivity app developed with <b>React Native</b>, enabling users to organize tasks, notes, and projects across multiple devices. It offers <b>cloud sync</b>, intuitive UI, and collaboration features.",
-                            "tags": [
-                                "React",
-                                "Organization",
-                                "Notes"
-                            ]
-                        },
-                        "zh": {
-                            "title": "Light Blue",
-                            "text": "A fully-featured productivity app developed with <b>React Native</b>, enabling users to organize tasks, notes, and projects across multiple devices. It offers <b>cloud sync</b>, intuitive UI, and collaboration features.",
-                            "tags": [
-                                "React",
-                                "Organization",
-                                "Notes"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "id": 4,
-                    "categoryId": "category_web",
-                    "img": "images/pictures/portfolio-project-logo-1.png",
-                    "faIcon": "",
-                    "faIconColors": {
-                        "bg": "",
-                        "fill": ""
-                    },
-                    "preview": {
-                        "links": [
-                            {
-                                "href": "https://cash.com",
-                                "tooltipString": "open_website",
-                                "faIcon": "fa-solid fa-link"
-                            }
-                        ],
-                        "screenshots": [],
-                        "screenshotsAspectRatio": "",
-                        "youtubeVideo": "https://www.youtube.com/watch?v=MQe_MoJ7Iww"
-                    },
-                    "locales": {
-                        "en": {
-                            "title": "SmartCash",
-                            "text": "A finance website built using <b>Next.js</b>, allowing users to <b>track budgets</b> and manage their money with interactive charts and insights.",
-                            "tags": [
-                                "Next.js",
-                                "Finance",
-                                "Money"
-                            ]
-                        },
-                        "zh": {
-                            "title": "SmartCash",
-                            "text": "A finance website built using <b>Next.js</b>, allowing users to <b>track budgets</b> and manage their money with interactive charts and insights.",
-                            "tags": [
-                                "Next.js",
-                                "Finance",
-                                "Money"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "id": 5,
-                    "categoryId": "category_apps",
-                    "img": "images/pictures/portfolio-project-logo-2.png",
-                    "faIcon": "",
-                    "faIconColors": {
-                        "bg": "",
-                        "fill": ""
-                    },
-                    "preview": {
-                        "links": [
-                            {
-                                "href": "https://apple.com",
-                                "tooltipString": "see_on_app_store",
-                                "faIcon": "fa-brands fa-apple"
-                            },
-                            {
-                                "href": "https://google.com",
-                                "tooltipString": "see_on_google_play",
-                                "faIcon": "fa-brands fa-google-play"
-                            }
-                        ],
-                        "screenshots": [],
-                        "screenshotsAspectRatio": "",
-                        "youtubeVideo": ""
-                    },
-                    "locales": {
-                        "en": {
-                            "title": "Snappy",
-                            "text": "A powerful photography app designed with <b>Swift</b> for iOS and Android, featuring <b>advanced camera controls</b>, editing tools, and AI-powered filters for quick photo enhancements.",
-                            "tags": [
-                                "Swift",
-                                "Photography",
-                                "Camera"
-                            ]
-                        },
-                        "zh": {
-                            "title": "Snappy",
-                            "text": "A powerful photography app designed with <b>Swift</b> for iOS and Android, featuring <b>advanced camera controls</b>, editing tools, and AI-powered filters for quick photo enhancements.",
-                            "tags": [
-                                "Swift",
-                                "Photography",
-                                "Camera"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "id": 6,
-                    "categoryId": "category_web",
-                    "img": "images/pictures/portfolio-project-logo-5.png",
-                    "faIcon": "",
-                    "faIconColors": {
-                        "bg": "",
-                        "fill": ""
-                    },
-                    "preview": {
-                        "links": [
-                            {
-                                "href": "https://google.com",
-                                "tooltipString": "open_website",
-                                "faIcon": "fa-solid fa-link"
-                            }
-                        ],
-                        "screenshots": [],
-                        "screenshotsAspectRatio": "",
-                        "youtubeVideo": ""
-                    },
-                    "locales": {
-                        "en": {
-                            "title": "Sweet Scoops",
-                            "text": "A recipe website built with <b>WordPress</b> and WooCommerce, featuring a rich collection of <b>dessert recipes</b> and an integrated e-commerce platform.",
-                            "tags": [
-                                "WooCommerce",
-                                "Food",
-                                "Desserts"
-                            ]
-                        },
-                        "zh": {
-                            "title": "Sweet Scoops",
-                            "text": "A recipe website built with <b>WordPress</b> and WooCommerce, featuring a rich collection of <b>dessert recipes</b> and an integrated e-commerce platform.",
-                            "tags": [
-                                "WooCommerce",
-                                "Food",
-                                "Desserts"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "id": 7,
-                    "categoryId": "category_web",
+                    "categoryId": "category_ai",
                     "img": "",
-                    "faIcon": "fa-solid fa-guitar",
+                    "faIcon": "fa-solid fa-brain",
                     "faIconColors": {
-                        "bg": "#7671AA",
-                        "fill": "#EEEEEE"
-                    },
-                    "preview": {
-                        "links": [
-                            {
-                                "href": "https://google.com",
-                                "tooltipString": "open_website",
-                                "faIcon": "fa-solid fa-link"
-                            }
-                        ],
-                        "screenshots": [],
-                        "screenshotsAspectRatio": "",
-                        "youtubeVideo": ""
-                    },
-                    "locales": {
-                        "en": {
-                            "title": "RockVerse",
-                            "text": "A dynamic music and entertainment website developed with <b>Django</b>, showcasing rock music news, events, and <b>streaming content</b>.",
-                            "tags": [
-                                "Django",
-                                "Music",
-                                "Rock"
-                            ]
-                        },
-                        "zh": {
-                            "title": "RockVerse",
-                            "text": "A dynamic music and entertainment website developed with <b>Django</b>, showcasing rock music news, events, and <b>streaming content</b>.",
-                            "tags": [
-                                "Django",
-                                "Music",
-                                "Rock"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "id": 8,
-                    "categoryId": "category_utilities",
-                    "img": "images/pictures/portfolio-project-logo-4.png",
-                    "faIcon": "",
-                    "faIconColors": {
-                        "bg": "",
-                        "fill": ""
+                        "bg": "#7209b7",
+                        "fill": "#ffffff"
                     },
                     "preview": {
                         "links": [],
                         "screenshots": [],
                         "screenshotsAspectRatio": "",
-                        "youtubeVideo": "https://www.youtube.com/watch?v=bf3Lz33nHy0"
-                    },
-                    "locales": {
-                        "en": {
-                            "title": "Soccer Analytics",
-                            "text": "An AI-powered sports analytics platform built with <b>Python</b> and <b>TensorFlow</b>, offering detailed soccer <b>predictions</b> and team management tools.",
-                            "tags": [
-                                "AI",
-                                "Prediction",
-                                "Soccer"
-                            ]
-                        },
-                        "zh": {
-                            "title": "Soccer Analytics",
-                            "text": "An AI-powered sports analytics platform built with <b>Python</b> and <b>TensorFlow</b>, offering detailed soccer <b>predictions</b> and team management tools.",
-                            "tags": [
-                                "AI",
-                                "Prediction",
-                                "Soccer"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "id": 9,
-                    "categoryId": "category_apps",
-                    "img": "",
-                    "faIcon": "fa-solid fa-truck-fast",
-                    "faIconColors": {
-                        "bg": "#007396",
-                        "fill": "#EEEEEE"
-                    },
-                    "preview": {
-                        "links": [
-                            {
-                                "href": "https://apple.com",
-                                "tooltipString": "see_on_app_store",
-                                "faIcon": "fa-brands fa-apple"
-                            },
-                            {
-                                "href": "https://google.com",
-                                "tooltipString": "see_on_google_play",
-                                "faIcon": "fa-brands fa-google-play"
-                            },
-                            {
-                                "href": "https://windows.com",
-                                "tooltipString": "see_on_windows_store",
-                                "faIcon": "fa-brands fa-windows"
-                            }
-                        ],
-                        "screenshots": [],
-                        "screenshotsAspectRatio": "",
                         "youtubeVideo": ""
                     },
                     "locales": {
                         "en": {
-                            "title": "QuickDrop",
-                            "text": "A cross-platform delivery app built with <b>React Native</b> and a <b>Node.js backend</b>, featuring <b>real-time tracking</b> and seamless integration with multiple platforms.",
+                            "title": "Agentic RAG Platform",
+                            "text": "An orchestrator built using <b>LangGraph</b> state-machines and <b>pgvector</b> to reduce hallucinations. Enforces automated quality gates using LLM-as-a-judge scoring before deployment.",
                             "tags": [
-                                "React Native",
-                                "Delivery",
-                                "Real-Time Tracking"
+                                "LangGraph",
+                                "pgvector",
+                                "Gemini",
+                                "CI/CD"
                             ]
                         },
                         "zh": {
-                            "title": "QuickDrop",
-                            "text": "A cross-platform delivery app built with <b>React Native</b> and a <b>Node.js backend</b>, featuring <b>real-time tracking</b> and seamless integration with multiple platforms.",
+                            "title": "\u667a\u80fd RAG \u5e73\u53f0",
+                            "text": "\u4f7f\u7528 <b>LangGraph</b> \u72b6\u6001\u673a\u548c <b>pgvector</b> \u6784\u5efa\u7684\u667a\u80fd\u7f16\u6392\u5668\uff0c\u5927\u5e45\u964d\u4f4e\u4e86 AI \u5e7b\u89c9\u3002\u5229\u7528\u5927\u8bed\u8a00\u6a21\u578b\u8bc4\u4f30\u7cfb\u7edf\u5f3a\u5236\u6267\u884c\u81ea\u52a8\u5316\u7684\u4ee3\u7801\u8d28\u91cf\u5ba1\u6838\u6d41\u6c34\u7ebf\u3002",
                             "tags": [
-                                "React Native",
-                                "Delivery",
-                                "Real-Time Tracking"
+                                "LangGraph",
+                                "pgvector",
+                                "Gemini",
+                                "CI/CD"
                             ]
                         }
                     }

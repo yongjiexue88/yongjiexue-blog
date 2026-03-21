@@ -1,5 +1,5 @@
 {
-    "name": "Mark Choi",
+    "name": "Yongjie Xue",
     "profilePictureUrl": "images/pictures/profile-picture.jpg",
     "resumePdfUrl": "",
     "statusCircleVisible": true,
@@ -7,30 +7,30 @@
     "statusCircleHoverMessage": "status_message_available_for_freelance",
     "locales": {
         "en": {
-            "localized_name": "Mark Choi",
-            "localized_name_stylized": " [[Mark {{Choi}}]]",
+            "localized_name": "Yongjie Xue",
+            "localized_name_stylized": " [[Yongjie {{Xue}}]]",
             "status_message_available_for_freelance": "Available for freelance!",
             "roles": [
-                "Backend Developer",
+                "Full Stack Engineer",
                 "Frontend Developer",
-                "DevOps Engineer",
-                "UX Designer"
+                "Backend Developer",
+                "AI Systems Engineer"
             ],
-            "name_pronunciation_ipa": "/mark chwe/",
-            "name_pronunciation_audio_url": "audio/english-name-pronunciation.mp3"
+            "name_pronunciation_ipa": "[ yông jié shwë ]",
+            "name_pronunciation_audio_url": "audio/yongjie.mp3"
         },
         "zh": {
-            "localized_name": "Mark Choi",
-            "localized_name_stylized": " [[Mark {{Choi}}]]",
-            "status_message_available_for_freelance": "可接受兼职接单！",
+            "localized_name": "Yongjie Xue",
+            "localized_name_stylized": " [[薛 {{勇杰}}]]",
+            "status_message_available_for_freelance": "可接受自由职业合作！",
             "roles": [
-                "后端开发工程师",
+                "全栈工程师",
                 "前端开发工程师",
-                "DevOps 工程师",
-                "UX 设计师"
+                "后端开发工程师",
+                "AI 系统工程师"
             ],
-            "name_pronunciation_ipa": "/mark chwe/",
-            "name_pronunciation_audio_url": "audio/english-name-pronunciation.mp3"
+            "name_pronunciation_ipa": "[ yông jié shwë ]",
+            "name_pronunciation_audio_url": "audio/yongjie.mp3"
         }
     }
 }

@@ -8,10 +8,10 @@
                 "title_long": "{{Work}} Experience"
             },
             "zh": {
-                "title_short": "Experience",
-                "title_short_nav": "Experience",
-                "title_long_prefix": "Summary of my",
-                "title_long": "{{Work}} Experience"
+                "title_short": "工作经历",
+                "title_short_nav": "工作经历",
+                "title_long_prefix": "我的",
+                "title_long": "{{工作}} 经历"
             }
         }
     },
@@ -27,206 +27,139 @@
             "items": [
                 {
                     "id": 1,
-                    "img": "images/pictures/timeline-place-sapphire-studio.png",
-                    "faIcon": "",
-                    "faIconColors": {
-                        "bg": "",
-                        "fill": ""
-                    },
-                    "dateStart": {
-                        "year": 2016,
-                        "month": 3
-                    },
-                    "dateEnd": {
-                        "year": 2018,
-                        "month": 6
-                    },
-                    "locales": {
-                        "en": {
-                            "title": "{{Backend}} Developer",
-                            "province": "Toronto",
-                            "country": "Canada",
-                            "institution": "Sapphire Studio",
-                            "text": "Developed and maintained [[scalable backend systems]] for various clients, optimizing database performance and implementing RESTful APIs to improve application functionality.",
-                            "list": [],
-                            "tags": [
-                                "PHP8.0",
-                                "MySQL",
-                                "Laravel"
-                            ]
-                        },
-                        "zh": {
-                            "title": "{{Backend}} Developer",
-                            "province": "Toronto",
-                            "country": "Canada",
-                            "institution": "Sapphire Studio",
-                            "text": "Developed and maintained [[scalable backend systems]] for various clients, optimizing database performance and implementing RESTful APIs to improve application functionality.",
-                            "list": [],
-                            "tags": [
-                                "PHP8.0",
-                                "MySQL",
-                                "Laravel"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "id": 2,
-                    "img": "images/pictures/timeline-place-coursera.png",
-                    "faIcon": "",
-                    "faIconColors": {
-                        "bg": "",
-                        "fill": ""
-                    },
-                    "dateStart": {
-                        "year": 2018,
-                        "month": 6
-                    },
-                    "dateEnd": {
-                        "year": 2020,
-                        "month": 12
-                    },
-                    "locales": {
-                        "en": {
-                            "title": "{{Full-Stack}} Engineer",
-                            "province": "",
-                            "country": "Remote",
-                            "institution": "Coursera",
-                            "text": "Worked on enhancing the Coursera website by implementing new features and improving user experience, utilizing both frontend and backend technologies to ensure seamless functionality.",
-                            "list": [],
-                            "tags": [
-                                "Svelte",
-                                "NodeJS",
-                                "Laravel",
-                                "REST APIs",
-                                "Docker"
-                            ]
-                        },
-                        "zh": {
-                            "title": "{{Full-Stack}} Engineer",
-                            "province": "",
-                            "country": "Remote",
-                            "institution": "Coursera",
-                            "text": "Worked on enhancing the Coursera website by implementing new features and improving user experience, utilizing both frontend and backend technologies to ensure seamless functionality.",
-                            "list": [],
-                            "tags": [
-                                "Svelte",
-                                "NodeJS",
-                                "Laravel",
-                                "REST APIs",
-                                "Docker"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "id": 3,
-                    "img": "images/pictures/timeline-place-adobe.png",
-                    "faIcon": "",
-                    "faIconColors": {
-                        "bg": "",
-                        "fill": ""
-                    },
-                    "dateStart": {
-                        "year": 2020,
-                        "month": 12
-                    },
-                    "dateEnd": {
-                        "year": 2022,
-                        "month": 11
-                    },
-                    "locales": {
-                        "en": {
-                            "title": "{{Backend}} Engineer",
-                            "province": "New York",
-                            "country": "US",
-                            "institution": "Adobe Inc",
-                            "text": "Contributed to the development of robust backend systems for Adobe Creative Cloud, integrating third-party services and improving data processing efficiency through cloud functions.",
-                            "list": [],
-                            "tags": [
-                                "JavaScript",
-                                "Flutter",
-                                "MongoDB",
-                                "CodeIgniter",
-                                "Kubernetes"
-                            ]
-                        },
-                        "zh": {
-                            "title": "{{Backend}} Engineer",
-                            "province": "New York",
-                            "country": "US",
-                            "institution": "Adobe Inc",
-                            "text": "Contributed to the development of robust backend systems for Adobe Creative Cloud, integrating third-party services and improving data processing efficiency through cloud functions.",
-                            "list": [],
-                            "tags": [
-                                "JavaScript",
-                                "Flutter",
-                                "MongoDB",
-                                "CodeIgniter",
-                                "Kubernetes"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "id": 4,
                     "img": "",
-                    "faIcon": "fa-brands fa-apple",
+                    "faIcon": "fa-solid fa-briefcase",
                     "faIconColors": {
-                        "bg": "#111",
-                        "fill": "#EEE"
+                        "bg": "#7209b7",
+                        "fill": "#ffffff"
                     },
                     "dateStart": {
-                        "year": 2022,
-                        "month": 12
+                        "year": 2024,
+                        "month": 11
                     },
                     "dateEnd": {
                         "now": true
                     },
                     "locales": {
                         "en": {
-                            "title": "{{Senior Backend}} Developer",
-                            "province": "California",
-                            "country": "US",
-                            "institution": "Apple Inc",
-                            "text": "Leading a team of developers to design and implement backend solutions for Apple's services, with a focus on:",
+                            "title": "{{Full Stack}} Engineer",
+                            "province": "",
+                            "country": "Remote",
+                            "institution": "Hamilton Telecommunications",
+                            "text": "Architected low-latency global communication platforms and backend logic for real-time TRS systems.",
                             "list": [
-                                "Security",
-                                "Scalability to handle millions of users globally",
-                                "Developing RESTful APIs",
-                                "Optimizing database performance with PostgreSQL",
-                                "Building services with Swift, PHP, and GraphQL"
+                                "Architected a low-latency TRS platform reducing call-setup latency by 15% across thousands of daily sessions.",
+                                "Engineered a distributed telecom backend across Node.js and Java integrating FreeSWITCH and Redis.",
+                                "Delivered an on-prem LLM workflow with Ollama and RAG to convert emails into structured bids.",
+                                "Led frontend modernization by upgrading legacy applications to Angular 17+ and migrating tests to Jest."
                             ],
-                            "tags": [
-                                "JavaScript",
-                                "React",
-                                "NodeJS",
-                                "PHP",
-                                "REST APIs",
-                                "Docker"
-                            ]
+                            "tags": ["React", "Angular 17", "Node.js", "Redis", "GitHub Actions"]
                         },
                         "zh": {
-                            "title": "{{Senior Backend}} Developer",
-                            "province": "California",
-                            "country": "US",
-                            "institution": "Apple Inc",
-                            "text": "Leading a team of developers to design and implement backend solutions for Apple's services, with a focus on:",
+                            "title": "{{全栈}} 工程师",
+                            "province": "",
+                            "country": "Remote",
+                            "institution": "Hamilton Telecommunications",
+                            "text": "架构低延迟的全球通信平台，并开发面向实时 TRS 系统的后端逻辑。",
                             "list": [
-                                "Security",
-                                "Scalability to handle millions of users globally",
-                                "Developing RESTful APIs",
-                                "Optimizing database performance with PostgreSQL",
-                                "Building services with Swift, PHP, and GraphQL"
+                                "架构低延迟 TRS 平台，在每日成千上万次会话中使通话建立延迟降低 15%。",
+                                "利用 Node.js 和 Java 开发分布式电信后端，深度集成 FreeSWITCH 和 Redis。",
+                                "部署基于 Ollama 和 RAG 架构的本地 LLM 工作流，将邮件自动转为结构化标书。",
+                                "主导前端现代化，将遗留应用升级至 Angular 17+，并将测试环境迁移至 Jest。"
                             ],
-                            "tags": [
-                                "JavaScript",
-                                "React",
-                                "NodeJS",
-                                "PHP",
-                                "REST APIs",
-                                "Docker"
-                            ]
+                            "tags": ["React", "Angular 17", "Node.js", "Redis", "GitHub Actions"]
+                        }
+                    }
+                },
+                {
+                    "id": 2,
+                    "img": "",
+                    "faIcon": "fa-solid fa-briefcase",
+                    "faIconColors": {
+                        "bg": "#4361ee",
+                        "fill": "#ffffff"
+                    },
+                    "dateStart": {
+                        "year": 2024,
+                        "month": 5
+                    },
+                    "dateEnd": {
+                        "year": 2024,
+                        "month": 11
+                    },
+                    "locales": {
+                        "en": {
+                            "title": "{{Full Stack}} Engineer",
+                            "province": "",
+                            "country": "Remote",
+                            "institution": "Pinata",
+                            "text": "Led the design and development of scalable backend applications and scalable web architecture.",
+                            "list": [
+                                "Led backend development with Node.js enabling billing caps, analytics, and Marketplace integrations.",
+                                "Developed and tuned PostgreSQL databases resulting in a 30% increase in system reliability.",
+                                "Replaced Redux middleware with React Query to improve fetch efficiency.",
+                                "Implemented a secure Keycloak user authentication system backed up by Docker environments."
+                            ],
+                            "tags": ["Node.js", "PostgreSQL", "React Query", "Keycloak", "Figma"]
+                        },
+                        "zh": {
+                            "title": "{{全栈}} 工程师",
+                            "province": "",
+                            "country": "Remote",
+                            "institution": "Pinata",
+                            "text": "主导设计和开发高可用的后端应用系统与可扩展 Web 架构。",
+                            "list": [
+                                "使用 Node.js 负责后端开发，实现了计费上限、分析功能和 Marketplace 插件集成。",
+                                "开发并优化 PostgreSQL 数据库，使系统可靠性提升 30%。",
+                                "用 React Query 取代 Redux 中间件，大幅改善应用数据获取效率。",
+                                "通过 Docker 环境测试并在后端实施了基于 Keycloak 的安全认证系统。"
+                            ],
+                            "tags": ["Node.js", "PostgreSQL", "React Query", "Keycloak", "Figma"]
+                        }
+                    }
+                },
+                {
+                    "id": 3,
+                    "img": "",
+                    "faIcon": "fa-solid fa-laptop-code",
+                    "faIconColors": {
+                        "bg": "#f72585",
+                        "fill": "#ffffff"
+                    },
+                    "dateStart": {
+                        "year": 2019,
+                        "month": 8
+                    },
+                    "dateEnd": {
+                        "year": 2022,
+                        "month": 4
+                    },
+                    "locales": {
+                        "en": {
+                            "title": "{{Software}} Engineer",
+                            "province": "",
+                            "country": "US",
+                            "institution": "Siemens Medical Equipment Ltd",
+                            "text": "Engineered advanced AI-driven medical analysis systems and automated QA packaging logic.",
+                            "list": [
+                                "Revamped the contactless surgical interface using React for a 50% user engagement boost.",
+                                "Developed an automated packaging system achieving a 90% reduction in release time.",
+                                "Built Python-based AI analytics dashboards to enhance medical image quality by 20%."
+                            ],
+                            "tags": ["React", "Python", "QA Automation", "Medical Imaging"]
+                        },
+                        "zh": {
+                            "title": "{{软件}} 工程师",
+                            "province": "",
+                            "country": "美国",
+                            "institution": "西门子医疗设备有限公司",
+                            "text": "开发先进的 AI 驱动医疗分析系统及自动化 QA 打包逻辑。",
+                            "list": [
+                                "使用 React 重构了非接触式手术界面，用户互动率提升 50%。",
+                                "开发自动化打包系统，缩小 90% 的发布耗时优化了质检部门流转率。",
+                                "采用 Python 构建由 AI 驱动的医学图像质量分析指标面板，画质整体提升 20%。"
+                            ],
+                            "tags": ["React", "Python", "自动化 QA", "医学图像"]
                         }
                     }
                 }

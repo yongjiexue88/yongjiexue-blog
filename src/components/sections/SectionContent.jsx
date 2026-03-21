@@ -11,7 +11,7 @@ function SectionContent({ section }) {
         <div className={`section-content`}>
             <div className={`section-content-border-decoration section-content-border-decoration-top-left`}/>
 
-            {isAboutSection && <ParallaxBalloonHero />}
+            {/* {isAboutSection && <ParallaxBalloonHero />} */}
 
             <div className={`section-content-elements-wrapper`}>
                 <SectionHeader section={section}/>
