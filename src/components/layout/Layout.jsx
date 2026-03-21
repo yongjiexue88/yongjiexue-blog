@@ -3,7 +3,6 @@ import React, {useEffect, useState} from 'react'
 import {useUtils} from "/src/hooks/utils.js"
 import LayoutAnimatedBackground from "/src/components/layout/LayoutAnimatedBackground.jsx"
 import LayoutStaticBackground from "/src/components/layout/LayoutStaticBackground.jsx"
-import LayoutParallaxBackground from "/src/components/layout/LayoutParallaxBackground.jsx"
 
 function Layout({ id, children, backgroundStyle }) {
     const utils = useUtils()
@@ -22,8 +21,6 @@ function Layout({ id, children, backgroundStyle }) {
     return (
         <div id={id}
              className={`layout`}>
-
-            <LayoutParallaxBackground />
 
             {isAnimatedBackground && <LayoutAnimatedBackground/>}
             {isStaticBackground && <LayoutStaticBackground/>}

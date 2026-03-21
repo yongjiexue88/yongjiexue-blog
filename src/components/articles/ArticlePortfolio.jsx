@@ -1,5 +1,6 @@
 import "./ArticlePortfolio.scss"
 import React, {useEffect, useState} from 'react'
+import { Parallax } from 'react-next-parallax'
 import Article from "/src/components/articles/base/Article.jsx"
 import Transitionable from "/src/components/capabilities/Transitionable.jsx"
 import {useViewport} from "/src/providers/ViewportProvider.jsx"
@@ -86,11 +87,22 @@ function ArticlePortfolioItems({ dataWrapper, selectedItemCategoryId }) {
 function ArticlePortfolioItem({ itemWrapper }) {
     return (
         <div className={`article-portfolio-item`}>
-            <AvatarView src={itemWrapper.img}
-                        faIcon={itemWrapper.faIcon}
-                        style={itemWrapper.faIconStyle}
-                        alt={itemWrapper.imageAlt}
-                        className={`article-portfolio-item-avatar`}/>
+            <Parallax
+                borderRadius="12px"
+                overflowHiddenEnable={true}
+                tiltMaxAngleX={12}
+                tiltMaxAngleY={12}
+                lineGlareEnable={false}
+                spotGlareEnable={false}
+                className="article-portfolio-item-parallax"
+            >
+                <AvatarView src={itemWrapper.img}
+                            faIcon={itemWrapper.faIcon}
+                            style={itemWrapper.faIconStyle}
+                            alt={itemWrapper.imageAlt}
+                            className={`article-portfolio-item-avatar`}
+                            data-parallax-offset="3"/>
+            </Parallax>
 
             <ArticlePortfolioItemTitle itemWrapper={itemWrapper}/>
             <ArticlePortfolioItemBody itemWrapper={itemWrapper}/>

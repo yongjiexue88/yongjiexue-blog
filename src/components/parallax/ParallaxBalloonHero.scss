@@ -1,0 +1,99 @@
+/* ── Balloon Float Keyframes ── */
+@keyframes balloonFloat {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-12px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes balloonFloat2 {
+    0%   { transform: translateY(0) rotate(-2deg); }
+    50%  { transform: translateY(-18px) rotate(2deg); }
+    100% { transform: translateY(0) rotate(-2deg); }
+}
+
+/* ── Hero wrapper ── */
+.parallax-balloon-hero-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1.5rem 0;
+}
+
+/* ── Parallax container ── */
+.parallax-balloon-hero {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    aspect-ratio: 2.25;
+
+    @media (max-width: 768px) {
+        aspect-ratio: 1.8;
+    }
+
+    @media (max-width: 480px) {
+        aspect-ratio: 3/4;
+    }
+}
+
+/* ── Inner clipped area ── */
+.parallax-balloon-hero-inner {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: 24px;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+/* ── All balloon images ── */
+.parallax-balloon-img {
+    pointer-events: none;
+    position: absolute;
+    top: -5%;
+    left: 50%;
+    height: 110%;
+    width: auto;
+    max-width: none;
+    transform: translateX(-50%);
+
+    @media (max-width: 768px) {
+        left: 60%;
+    }
+
+    @media (max-width: 480px) {
+        left: 30%;
+    }
+}
+
+/* ── Special floating balloon (hidden on smaller screens) ── */
+.balloon-float-special {
+    top: -5%;
+    display: none;
+    animation: balloonFloat 4s ease-in-out infinite;
+
+    @media (min-width: 1024px) {
+        display: block;
+        left: -7%;
+    }
+}
+
+/* ── The outer floating balloon ── */
+.parallax-balloon-floating {
+    animation: balloonFloat2 5s ease-in-out infinite;
+    transform: scale(0.85);
+
+    @media (min-width: 768px) {
+        left: -10% !important;
+        top: -10% !important;
+        transform: scale(1);
+    }
+
+    @media (max-width: 767px) {
+        left: -75% !important;
+        top: -15% !important;
+    }
+
+    @media (min-width: 1024px) {
+        left: -7% !important;
+    }
+}

@@ -1,5 +1,6 @@
 import "./NavProfileCard.scss"
 import React, {useEffect, useState} from 'react'
+import { Parallax } from 'react-next-parallax'
 import {Card} from "react-bootstrap"
 import {useLanguage} from "/src/providers/LanguageProvider.jsx"
 import {useNavigation} from "/src/providers/NavigationProvider.jsx"
@@ -56,10 +57,21 @@ function NavProfileCard({ profile, expanded }) {
 
     return (
         <Card className={`nav-profile-card ${expandedClass}`}>
-            <ImageView src={profilePictureUrl}
-                       className={`nav-profile-card-avatar`}
-                       hideSpinner={true}
-                       alt={name}/>
+            <Parallax
+                borderRadius="50%"
+                overflowHiddenEnable={true}
+                tiltMaxAngleX={10}
+                tiltMaxAngleY={10}
+                lineGlareEnable={false}
+                spotGlareEnable={false}
+                className="nav-profile-card-avatar-parallax"
+            >
+                <ImageView src={profilePictureUrl}
+                           className={`nav-profile-card-avatar`}
+                           hideSpinner={true}
+                           alt={name}
+                           data-parallax-offset="2"/>
+            </Parallax>
 
             {statusCircleVisible && (
                 <StatusCircle className={`nav-profile-card-status-circle`}
