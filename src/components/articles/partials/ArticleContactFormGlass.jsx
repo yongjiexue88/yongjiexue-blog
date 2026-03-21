@@ -19,7 +19,7 @@ export default function ArticleContactFormGlass({ name, setName, email, setEmail
         >
             <div className="contact-glass-container">
                 <h2 className="contact-glass-title">
-                    {language.getString("send_message_title") || "SEND ME A MESSAGE"}
+                    SEND ME A MESSAGE
                 </h2>
 
                 <div className="contact-glass-form-group">
@@ -27,7 +27,7 @@ export default function ArticleContactFormGlass({ name, setName, email, setEmail
                     <input 
                         type="text" 
                         className="contact-glass-input" 
-                        placeholder={language.getString("name_placeholder") || "Your Name"}
+                        placeholder="Your Name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
@@ -39,7 +39,7 @@ export default function ArticleContactFormGlass({ name, setName, email, setEmail
                     <input 
                         type="email" 
                         className="contact-glass-input" 
-                        placeholder={language.getString("email_placeholder") || "Email Address"}
+                        placeholder="Email Address"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
@@ -49,7 +49,7 @@ export default function ArticleContactFormGlass({ name, setName, email, setEmail
                 <div className="contact-glass-form-group-textarea">
                     <textarea 
                         className="contact-glass-input" 
-                        placeholder={language.getString("message_placeholder") || "Message"}
+                        placeholder="Message"
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         rows={5}
@@ -62,7 +62,7 @@ export default function ArticleContactFormGlass({ name, setName, email, setEmail
                         type="submit"
                         variant="primary"
                         faIcon="fa-solid fa-paper-plane"
-                        label={language.getString("send_message") || "SEND MESSAGE"}
+                        label="SEND MESSAGE"
                         className="contact-glass-submit-btn"
                     />
                 </div>

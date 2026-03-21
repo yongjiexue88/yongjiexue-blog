@@ -32,15 +32,13 @@ export default function ArticleContactFormLetter({ name, email }) {
                 {/* Real-time Rendering Letter */}
                 <div className="contact-letter">
                     <p className="contact-letter-line contact-letter-from">
-                        {language.getString("from_label") || "From"}{" "}  
-                        <span className="contact-letter-value">{name}</span>
+                        From: <span className="contact-letter-value">{name}</span>
                     </p>
                     <p className="contact-letter-line contact-letter-email">
-                        {language.getString("email_label") || "Email"}{" "}  
-                        <span className="contact-letter-value">{email}</span>
+                        Email: <span className="contact-letter-value">{email}</span>
                     </p>
                     <p className="contact-letter-signoff">
-                        {language.getString("with_love") || "With love"}
+                        With love
                     </p>
                 </div>
             </div>

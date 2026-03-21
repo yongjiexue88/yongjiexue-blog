@@ -214,14 +214,14 @@ function ArticleContactFormContentFields({ onInput, didSubmit }) {
     }, [didSubmit])
 
     return (
-        <div className="d-flex flex-column flex-xl-row align-items-center justify-content-center gap-5 w-100 mt-4">
+        <div className="row align-items-center justify-content-center gy-5 w-100 mt-4 mx-0">
             {/* Left side: Real-time Letter */}
-            <div className="flex-grow-1 d-flex justify-content-center w-100">
+            <div className="col-12 col-xl-6 d-flex justify-content-center px-0">
                 <ArticleContactFormLetter name={name} email={email} />
             </div>
 
             {/* Right side: Glassmorphism Fields */}
-            <div className="flex-grow-1 d-flex justify-content-center w-100">
+            <div className="col-12 col-xl-6 d-flex justify-content-center px-0">
                 <ArticleContactFormGlass 
                     name={name} setName={setName} 
                     email={email} setEmail={setEmail} 
