@@ -21,7 +21,7 @@
         "react-dom": "^18.3.1",
         "react-next-parallax": "^0.1.0",
         "smooth-scrollbar": "^8.8.4",
-        "swiper": "^11.1.14"
+        "swiper": "^12.1.2"
     },
     "devDependencies": {
         "@eslint/js": "^9.9.0",
