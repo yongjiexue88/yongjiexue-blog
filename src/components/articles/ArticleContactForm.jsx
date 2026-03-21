@@ -13,6 +13,7 @@ import {MessageCard, MessageCardIcon, MessageCardBody, MessageCardFooter} from "
 import Input from "/src/components/forms/fields/Input.jsx"
 import Textarea from "/src/components/forms/fields/Textarea.jsx"
 import StandardButton from "/src/components/buttons/StandardButton.jsx"
+import ArticleContactFormLetter from "/src/components/articles/partials/ArticleContactFormLetter.jsx"
 
 /**
  * @param {ArticleDataWrapper} dataWrapper
@@ -218,7 +219,13 @@ function ArticleContactFormContentFields({ onInput, didSubmit }) {
 
     return (
         <>
+            {/* Left side: Real-time Letter */}
             <RowFormGroup className={`${splitColClass}`}>
+                <ArticleContactFormLetter name={name} email={email} />
+            </RowFormGroup>
+
+            {/* Right side: Input Fields stacked */}
+            <RowFormGroup className={`${splitColClass} flex-column gap-3`}>
                 <RowFormGroupItem>
                     <Input id={`contact-form-name`}
                            name={`name`}
@@ -254,10 +261,8 @@ function ArticleContactFormContentFields({ onInput, didSubmit }) {
                            className={textClass}
                            required={true}/>
                 </RowFormGroupItem>
-            </RowFormGroup>
 
-            <RowFormGroup className={`${splitColClass}`}>
-                <RowFormGroupItem>
+                <RowFormGroupItem className="flex-grow-1">
                     <Textarea id={`contact-form-textarea`}
                               name={`message`}
                               model={message}

@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+
+.contact-postcard-letter-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 2em;
+    font-size: min(1vw, 14px);
+    aspect-ratio: 5 / 4;
+}
+
+.contact-blob-bg {
+    position: absolute;
+    top: -4em;
+    bottom: -9em;
+    left: -8em;
+    right: -8em;
+    z-index: -1;
+    background-image: url('/images/contact/blob-anim.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+
+    [data-theme='dark'] & {
+        background-image: url('/images/contact/blob-anim-dark.svg');
+    }
+}
+
+.contact-quill-wrapper {
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    z-index: 10;
+    width: 18.75em;
+    transform: translateY(-50%);
+    filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07)) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+    
+    [data-theme='dark'] & {
+        filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.5)) brightness(0.75);
+    }
+}
+
+.contact-quill {
+    width: 100%;
+    height: auto;
+}
+
+.contact-postcard-letter-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.contact-postcard {
+    position: relative;
+    display: flex;
+    width: 40em;
+    height: 22.5em;
+    margin-top: 14em;
+    margin-bottom: 7em;
+    transition: all 0.5s ease;
+    transform: rotate(-25deg) skewX(25deg);
+    
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: rgba(0, 0, 0, 0.2);
+        filter: blur(12px);
+        transition: all 0.5s ease;
+    }
+
+    &:hover {
+        transform: translateY(-1.25em) rotate(-25deg) skewX(-25deg);
+        &::after { top: 75%; }
+    }
+
+    .contact-postcard-segment {
+        height: 100%;
+        width: 16.666%; /* 100% / 6 segments */
+        border-top: 0.3125em solid white;
+        border-bottom: 0.3125em solid white;
+        background-color: white;
+        background-size: 40em;
+        transition: all 0.5s ease;
+        background-image: url('/images/contact/postcard/day.webp');
+
+        [data-theme='dark'] & {
+            background-image: url('/images/contact/postcard/night.webp');
+        }
+
+        &:first-child { border-left: 0.3125em solid white; }
+        &:last-child { border-right: 0.3125em solid white; }
+
+        .contact-postcard:hover & {
+            box-shadow: inset 0.75em 0 2.125em rgba(0, 0, 0, 0.5);
+        }
+
+        /* Hover tilt alternating rows */
+        .contact-postcard:hover &:nth-child(even) { transform: skewY(-25deg); }
+        .contact-postcard:hover &:nth-child(odd) { transform: skewY(25deg); }
+    }
+}
+
+.contact-letter {
+    position: relative;
+    border-radius: 6px;
+    background-image: url('/images/contact/paper.webp');
+    background-size: cover;
+    font-family: 'Alex Brush', cursive;
+    font-size: 1.875em;
+    line-height: 1.25;
+    color: rgba(47, 34, 53, 0.7);
+    padding: 0.75em;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+    transform: translateY(-2em) translateX(3em) rotate(-25deg) skewX(25deg);
+    width: 18em;
+
+    [data-theme='dark'] & {
+        background-image: url('/images/contact/paper-dark.webp');
+        color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+.contact-letter-line {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 0.2em;
+}
+
+.contact-letter-from { max-width: 14.5em; text-overflow: ellipsis; overflow: hidden; }
+.contact-letter-email { max-width: 14.5em; text-overflow: ellipsis; overflow: hidden; }
+
+.contact-letter-value {
+    font-size: 1.2em;
+}
+
+.contact-letter-signoff {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0.5em;
+    text-align: right;
+    margin-bottom: 0.2em;
+}
