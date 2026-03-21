@@ -8,15 +8,7 @@ export default function ArticleContactFormGlass({ name, setName, email, setEmail
     const language = useLanguage()
 
     return (
-        <Parallax
-            className="contact-glass-parallax-wrapper"
-            borderRadius="16px"
-            overflowHiddenEnable={false}
-            tiltMaxAngleX={10}
-            tiltMaxAngleY={10}
-            spotGlareEnable={false}
-            lineGlareEnable={false}
-        >
+        <div className="contact-glass-parallax-wrapper">
             <div className="contact-glass-container">
                 <h2 className="contact-glass-title">
                     SEND ME A MESSAGE
@@ -67,6 +59,6 @@ export default function ArticleContactFormGlass({ name, setName, email, setEmail
                     />
                 </div>
             </div>
-        </Parallax>
+        </div>
     )
 }
