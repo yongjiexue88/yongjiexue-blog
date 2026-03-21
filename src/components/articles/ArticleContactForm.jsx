@@ -14,6 +14,7 @@ import Input from "/src/components/forms/fields/Input.jsx"
 import Textarea from "/src/components/forms/fields/Textarea.jsx"
 import StandardButton from "/src/components/buttons/StandardButton.jsx"
 import ArticleContactFormLetter from "/src/components/articles/partials/ArticleContactFormLetter.jsx"
+import ArticleContactFormGlass from "/src/components/articles/partials/ArticleContactFormGlass.jsx"
 
 /**
  * @param {ArticleDataWrapper} dataWrapper
@@ -178,11 +179,6 @@ function ArticleContactFormContent({ dataWrapper, selectedItemCategoryId, setSho
                                                   email={emailDisplay}
                                                   onReset={_onReset}/>
             )}
-
-            {!didSubmit && (
-                <RowFormGroupSubmit faIcon={`fa-solid fa-envelope`}
-                                    label={language.getString("send_message")}/>
-            )}
         </RowForm>
     )
 }
@@ -218,61 +214,21 @@ function ArticleContactFormContentFields({ onInput, didSubmit }) {
     }, [didSubmit])
 
     return (
-        <>
+        <div className="d-flex flex-column flex-xl-row align-items-center justify-content-center gap-5 w-100 mt-4">
             {/* Left side: Real-time Letter */}
-            <RowFormGroup className={`${splitColClass}`}>
+            <div className="flex-grow-1 d-flex justify-content-center w-100">
                 <ArticleContactFormLetter name={name} email={email} />
-            </RowFormGroup>
+            </div>
 
-            {/* Right side: Input Fields stacked */}
-            <RowFormGroup className={`${splitColClass} flex-column gap-3`}>
-                <RowFormGroupItem>
-                    <Input id={`contact-form-name`}
-                           name={`name`}
-                           type={`text`}
-                           model={name}
-                           setModel={setName}
-                           faIconPrefix={`fa-solid fa-signature`}
-                           placeholder={language.getString("name")}
-                           className={textClass}
-                           required={true}/>
-                </RowFormGroupItem>
-
-                <RowFormGroupItem>
-                    <Input id={`contact-form-email`}
-                           name={`email`}
-                           type={`email`}
-                           model={email}
-                           setModel={setEmail}
-                           faIconPrefix={`fa-solid fa-envelope`}
-                           placeholder={language.getString("email")}
-                           className={textClass}
-                           required={true}/>
-                </RowFormGroupItem>
-
-                <RowFormGroupItem>
-                    <Input id={`contact-form-subject`}
-                           name={`contact-message-subject`}
-                           type={`text`}
-                           model={subject}
-                           setModel={setSubject}
-                           faIconPrefix={`fa-solid fa-pen-to-square`}
-                           placeholder={language.getString("subject")}
-                           className={textClass}
-                           required={true}/>
-                </RowFormGroupItem>
-
-                <RowFormGroupItem className="flex-grow-1">
-                    <Textarea id={`contact-form-textarea`}
-                              name={`message`}
-                              model={message}
-                              setModel={setMessage}
-                              placeholder={language.getString("message")}
-                              className={textClass}
-                              required={true}/>
-                </RowFormGroupItem>
-            </RowFormGroup>
-        </>
+            {/* Right side: Glassmorphism Fields */}
+            <div className="flex-grow-1 d-flex justify-content-center w-100">
+                <ArticleContactFormGlass 
+                    name={name} setName={setName} 
+                    email={email} setEmail={setEmail} 
+                    message={message} setMessage={setMessage} 
+                />
+            </div>
+        </div>
     )
 }
 
