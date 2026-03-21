@@ -60,7 +60,7 @@
     display: flex;
     width: 40em;
     height: 22.5em;
-    margin-top: 14em;
+    margin-top: 4em;
     margin-bottom: 7em;
     transition: all 0.5s ease;
     transform: rotate(-25deg) skewX(25deg);
@@ -136,6 +136,20 @@
 
 .contact-letter-from { max-width: 14.5em; text-overflow: ellipsis; overflow: hidden; }
 .contact-letter-email { max-width: 14.5em; text-overflow: ellipsis; overflow: hidden; }
+
+.contact-letter-message {
+    white-space: normal;
+    font-size: 0.9em;
+    line-height: 1.1;
+    margin-top: 0.5em;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-width: 16.5em;
+    word-break: break-word;
+}
 
 .contact-letter-value {
     font-size: 1.2em;

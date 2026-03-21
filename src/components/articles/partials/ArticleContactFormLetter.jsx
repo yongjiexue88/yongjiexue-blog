@@ -3,7 +3,7 @@ import React from 'react'
 import ImageView from "/src/components/generic/ImageView.jsx"
 import { useLanguage } from "/src/providers/LanguageProvider.jsx"
 
-export default function ArticleContactFormLetter({ name, email }) {
+export default function ArticleContactFormLetter({ name, email, message }) {
     const language = useLanguage()
 
     return (
@@ -37,6 +37,11 @@ export default function ArticleContactFormLetter({ name, email }) {
                     <p className="contact-letter-line contact-letter-email">
                         Email: <span className="contact-letter-value">{email}</span>
                     </p>
+                    {message && (
+                        <p className="contact-letter-line contact-letter-message">
+                            {message}
+                        </p>
+                    )}
                     <p className="contact-letter-signoff">
                         With love
                     </p>
